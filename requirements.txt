@@ -1,3 +1,4 @@
 asgiref==3.8.1
 Django==5.0.4
+django-taggit==5.0.1
 sqlparse==0.4.4
