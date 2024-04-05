@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     "music.apps.MusicConfig",
     "django_summernote",
     'taggit',
+    'sorl.thumbnail',
 ]
 
 

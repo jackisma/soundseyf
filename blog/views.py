@@ -9,4 +9,3 @@ class PostList(generic.ListView):
 class DetailView(generic.DetailView):
     model = Post 
     template_name = "blog/blog-single.html"
-

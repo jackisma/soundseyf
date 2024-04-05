@@ -4,13 +4,27 @@ from .models import *
 
 
 class MasterPiecesAdmin(admin.ModelAdmin):
-    list_display = ('song_id','name','Composer')
-    list_filter = ('Composer',)
+    list_display = ('song_id','name','composer')
+    list_filter = ('composer',)
     empty_value_display = "-empty-"
-    search_fields = ('name','Composer')
+    search_fields = ('name','composer')
     save_as = True 
     save_on_top = True 
     search_help_text = f'search in: {". ".join(search_fields)}'
 
 
-admin.site.register(MasterPieces,MasterPiecesAdmin)
+
+class ComposersAdmin(admin.ModelAdmin):
+    list_display = ('name',)
+    list_filter = ('name',)
+    empty_value_display = "-empty-"
+    search_fields = ('name',)
+    save_as = True 
+    save_on_top = True 
+    search_help_text = f'search in: {". ".join(search_fields)}'
+
+
+
+
+admin.site.register(MasterPiece,MasterPiecesAdmin)
+admin.site.register(Composer,ComposersAdmin)

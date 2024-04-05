@@ -1,4 +1,5 @@
 {% load static %}
+{% load thumbnail %}
 <!doctype html>
 <html lang="en">
 
@@ -10,7 +11,7 @@
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 </head>
 
-<body data-bs-theme="light">
+<body data-bs-theme="dark">
     <nav class="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">Soundseyf</a>
@@ -41,9 +42,9 @@
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="#">Composers</a></li>
                             <li><a class="dropdown-item" href="#">MasterPieces</a></li>
-                             <li>
+                            <li>
                                 <hr class="dropdown-divider">
-                            </li> 
+                            </li>
                             <li><a class="dropdown-item" href="#">Your Favorites</a></li>
                         </ul>
                     </li>
@@ -78,8 +79,7 @@
             <span class="visually-hidden">Next</span>
         </button>
     </div>
-
-
+    <hr>
     <!-- ############################################## Cards ############################################### -->
     <h2 style="padding-left: 10%; padding-top: 2%; font-family:verdana"> Guitar's geniuses </h2>
     <div class="container" style="padding-left: 2%;">
@@ -125,51 +125,28 @@
             </div>
         </div>
     </div>
+    <hr>
     <!-- ############################################## Cards ############################################### -->
     <h2 style="padding-left: 10%; padding-top: 2%; font-family:verdana"> Guitar's MasterPieces </h2>
     <div class="container" style="padding-left: 2%;">
         <div class="row" style="padding-top: 2%; padding-left: 5%;">
-            <div class="card" style="width: 18rem;">
-                <img src="{% static 'images/andres.jpg' %}" class="card-img-top" alt="...">
+            {% for piece in pieces %}
+            <div class="card" style="width: 18rem; padding-left: 2%;">
+                {% thumbnail piece.image "250x250" crop="center" as im %}
+                <img src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}">
+                {% endthumbnail %}
                 <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                        card's content.</p>
-                    <a href="#" class="btn btn-primary">Read More</a>
+                    <h5 class="card-title">{{piece.name}}</h5>
+                    {% for tag in piece.tags.all %}
+                    <p class="card-text">{{tag.name}}</p>
+                    {% endfor %}
+                    <a href="#" class="btn btn-outline-danger">Listen Song</a>
                 </div>
             </div>
-
-            <div class="card" style="width: 18rem;">
-                <img src="{% static 'images/dyens.jpg' %}" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                        card's content.</p>
-                    <a href="#" class="btn btn-primary">Read More</a>
-                </div>
-            </div>
-
-            <div class="card" style="width: 18rem;">
-                <img src="{% static 'images/dyens.jpg' %}" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                        card's content.</p>
-                    <a href="#" class="btn btn-primary">Read More</a>
-                </div>
-            </div>
-
-            <div class="card" style="width: 18rem;">
-                <img src="{% static 'images/paco.jpg' %}" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                        card's content.</p>
-                    <a href="#" class="btn btn-primary">Read More</a>
-                </div>
-            </div>
+            {% endfor %}
         </div>
     </div>
+    <hr>
     <!-- ############################################## Cards ############################################### -->
     <h2 style="padding-left: 10%; padding-top: 2%; font-family:verdana"> Your Favorite pieces </h2>
     <div class="container" style="padding-left: 2%;">
