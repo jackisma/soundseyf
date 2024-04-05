@@ -39,7 +39,10 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "blog.apps.BlogConfig",
     "website.apps.WebsiteConfig",
+    "accounts.apps.AccountsConfig",
+    "music.apps.MusicConfig",
     "django_summernote",
+    'taggit',
 ]
 
 
@@ -138,3 +141,7 @@ STATICFILES_DIRS = [
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+
+# taggit case INSENSITIVE option
+TAGGIT_CASE_INSENSITIVE = True
