@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     "django_summernote",
     'taggit',
     'sorl.thumbnail',
+    'django.contrib.humanize',
 ]
 
 

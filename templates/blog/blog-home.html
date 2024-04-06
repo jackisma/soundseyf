@@ -1,3 +1,5 @@
+{% load humanize %}
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -38,7 +40,7 @@
                             Music
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Composers</a></li>
+                            <li><a class="dropdown-item" href="{% url 'music:composers' %}">Composers</a></li>
                             <li><a class="dropdown-item" href="#">MasterPieces</a></li>
                             <li>
                                 <hr class="dropdown-divider">
@@ -77,8 +79,8 @@
                 <div class="card mb-4">
                     <div class="card-body">
                         <h2 class="card-title">{{ post.title }}</h2>
-                        <p class="card-text text-muted h6">{{ post.author }} | {{post.created_on }}</p>
-                        <p class="card-text text-muted h6">{{post.content}}</p>
+                        <p class="card-text text-muted h6">{{ post.author }} | {{post.created_on|naturaltime }}</p>
+                        <p class="card-text text-muted h6">{{post.content|truncatewords:10}}</p>
                         <p class="card-text">{{post.conent|slice:":200"}}</p>
                         <a href="{% url 'blog:blog-single' post.slug %}" class="btn btn-primary">Read More &rarr;</a>
                     </div>
@@ -96,6 +98,12 @@
     <footer class="py-3 bg-grey">
         <p class="m-0 text-dark text-center">Copyright &copy; 2024 My Music App</p>
     </footer>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
+        integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
+        crossorigin="anonymous"></script>
 </body>
 
 </html>
