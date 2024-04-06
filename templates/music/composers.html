@@ -10,17 +10,17 @@
         {% for composer in composers %}
         <div class="card mb-3" style="max-width: 540px; padding-top: 3%;">
           <div class="row g-0">
-            <div class="col-md-4">
+            <div class="col-md-4" style="padding-left: 1%;">
               {% thumbnail composer.image "190x190" crop="center" as im %}
               <img src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}">
               {% endthumbnail %}
             </div>
-            <div class="col-md-8">
+            <div class="col-md-8" style="padding-left: 3%;">
               <div class="card-body">
-                <h5 class="card-title" style="color:darkviolet">{{composer.name}}</h5>
+              <a href="{% url 'music:pieces' cid=composer.id %}" style="text-decoration: none;"><h5 class="card-title" style="color:darkviolet">{{composer.name}}</h5></a>  
                 <p class="card-text">{{composer.biography|truncatewords:20}}</p>
                 <h6 style="color:black;">{{composer.genre}}</h6>
-                <a href=""><button class="btn btn-outline-danger">Get</button></a>
+                <a href="{% url 'music:pieces' cid=composer.id %}"><button class="btn btn-outline-danger">Get</button></a>
               </div>
             </div>
           </div>
@@ -31,6 +31,5 @@
     {% include 'blog/sidebar.html' %}
   </div>
 </div>
-</body>
 
 {% endblock content %}

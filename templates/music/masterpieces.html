@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load thumbnail %}
+{% block content %}
+
+
+<style>
+  .card {
+    box-shadow: 0 16px 48px #6a6a6b;
+  }
+</style>
+
+<div class="container">
+  <div class="row">
+    <div class="">
+      <div class="container">
+        <div class="card" style="max-width: 790px; padding-top: 1%;">
+          <div class="row g-0">
+            <div class="col-md-4" style="padding-left: 2%;">
+              {% thumbnail composer.image "300x300" crop="center" as im %}
+              <img src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}">
+              {% endthumbnail %}
+            </div>
+            <div class="col-md-8" style="padding-left: 7%;">
+              <div class="card-body">
+                <a href="{% url 'music:pieces' cid=composer.id %}" style="text-decoration: none;">
+                  <h5 class="card-title" style="color:darkviolet">{{composer.name}}</h5>
+                </a>
+                <p class="card-text">{{composer.biography}}</p>
+                <h6 style="color:black;">{{composer.genre}}</h6>
+                <hr>
+                {% for piece in pieces %}
+                <h6 style="padding-top: 4%;">{{piece.name}}</h6>
+                 <audio controls><source src="/media/{{piece.song}}" type="audio/mp3"></audio>
+                 <hr>
+                {% endfor %}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+{% endblock content %}
