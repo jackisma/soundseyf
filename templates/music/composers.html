@@ -17,10 +17,13 @@
             </div>
             <div class="col-md-8" style="padding-left: 3%;">
               <div class="card-body">
-              <a href="{% url 'music:pieces' cid=composer.id %}" style="text-decoration: none;"><h5 class="card-title" style="color:darkviolet">{{composer.name}}</h5></a>  
+                <a href="{% url 'music:pieces' cid=composer.id %}" style="text-decoration: none;">
+                  <h5 class="card-title" style="color:darkviolet">{{composer.name}}</h5>
+                </a>
                 <p class="card-text">{{composer.biography|truncatewords:20}}</p>
                 <h6 style="color:black;">{{composer.genre}}</h6>
-                <a href="{% url 'music:pieces' cid=composer.id %}"><button class="btn btn-outline-danger">Get</button></a>
+                <a href="{% url 'music:pieces' cid=composer.id %}"><button
+                    class="btn btn-outline-danger">Get</button></a>
               </div>
             </div>
           </div>
@@ -31,5 +34,39 @@
     {% include 'blog/sidebar.html' %}
   </div>
 </div>
+
+
+<nav class="blog-pagination justify-content-center d-flex">
+  <ul class="pagination">
+    {% if composers.has_previous %}
+    <li class="page-item">
+      <a href="?page={{ composers.previous_page_number }}" class="page-link" aria-label="Previous">First
+        <span aria-hidden="true">
+          <span class="lnr lnr-chevron-left"></span>
+        </span>
+      </a>
+    </li>
+    {% endif %}
+
+    {% for i in composers.paginator.page_range %}
+    {% if composers.number == i %}
+    <li class="page-item active "><a href="?page={{i}}" class="page-link">{{i}}</a></li>
+    {% else %}
+    <li class="page-item"><a href="?page={{i}}" class="page-link">{{i}}</a></li>
+    {% endif %}
+    {% endfor %}
+
+    {% if composers.has_next %}
+    <li class="page-item">
+      <a href="?page={{ composers.next_page_number }}" class="page-link" aria-label="Next">Last
+        <span aria-hidden="true">
+          <span class="lnr lnr-chevron-right"></span>
+        </span>
+      </a>
+    </li>
+    {% endif %}
+  </ul>
+</nav>
+
 
 {% endblock content %}
