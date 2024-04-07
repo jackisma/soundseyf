@@ -31,9 +31,43 @@
                 <hr>
                 {% for piece in pieces %}
                 <h6 style="padding-top: 4%;">{{piece.name}}</h6>
-                 <audio controls><source src="/media/{{piece.song}}" type="audio/mp3"></audio>
-                 <hr>
+                <audio controls>
+                  <source src="/media/{{piece.song}}" type="audio/mp3">
+                </audio>
+                <hr>
                 {% endfor %}
+             <!--  $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ Pagination $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ -->
+                <nav class="blog-pagination justify-content-center d-flex">
+                  <ul class="pagination">
+                    {% if pieces.has_previous %}
+                    <li class="page-item">
+                      <a href="?page={{ composers.previous_page_number }}" class="page-link" aria-label="Previous">First
+                        <span aria-hidden="true">
+                          <span class="lnr lnr-chevron-left"></span>
+                        </span>
+                      </a>
+                    </li>
+                    {% endif %}
+
+                    {% for i in pieces.paginator.page_range %}
+                    {% if pieces.number == i %}
+                    <li class="page-item active "><a href="?page={{i}}" class="page-link">{{i}}</a></li>
+                    {% else %}
+                    <li class="page-item"><a href="?page={{i}}" class="page-link">{{i}}</a></li>
+                    {% endif %}
+                    {% endfor %}
+
+                    {% if pieces.has_next %}
+                    <li class="page-item">
+                      <a href="?page={{ composers.next_page_number }}" class="page-link" aria-label="Next">Last
+                        <span aria-hidden="true">
+                          <span class="lnr lnr-chevron-right"></span>
+                        </span>
+                      </a>
+                    </li>
+                    {% endif %}
+                  </ul>
+                </nav>
               </div>
             </div>
           </div>
@@ -43,6 +77,39 @@
   </div>
 </div>
 
+<!-- 
+<nav class="blog-pagination justify-content-center d-flex">
+  <ul class="pagination">
+    {% if pieces.has_previous %}
+    <li class="page-item">
+      <a href="?page={{ composers.previous_page_number }}" class="page-link" aria-label="Previous">First
+        <span aria-hidden="true">
+          <span class="lnr lnr-chevron-left"></span>
+        </span>
+      </a>
+    </li>
+    {% endif %}
+
+    {% for i in pieces.paginator.page_range %}
+    {% if pieces.number == i %}
+    <li class="page-item active "><a href="?page={{i}}" class="page-link">{{i}}</a></li>
+    {% else %}
+    <li class="page-item"><a href="?page={{i}}" class="page-link">{{i}}</a></li>
+    {% endif %}
+    {% endfor %}
+
+    {% if pieces.has_next %}
+    <li class="page-item">
+      <a href="?page={{ composers.next_page_number }}" class="page-link" aria-label="Next">Last
+        <span aria-hidden="true">
+          <span class="lnr lnr-chevron-right"></span>
+        </span>
+      </a>
+    </li>
+    {% endif %}
+  </ul>
+</nav>
+ -->
 
 
 

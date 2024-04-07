@@ -23,11 +23,19 @@ def ComposersView(request):
 
 
 
-def ComposerPieces(reqeust,cid):
+def ComposerPieces(request,cid):
     all_composers = Composer.objects.all()
     current_composer = get_object_or_404(all_composers , pk = cid) 
     pieces = MasterPiece.objects.filter(composer = cid)
+    p = Paginator(pieces,10)
+    try:
+        page_number = request.GET.get('page')
+        pieces = p.get_page(page_number)
+    except EmptyPage:
+        pieces = pieces.get_page(1)
+    except PageNotAnInteger:
+        pieces = pieces.get_page(1)
     context = {"composer" : current_composer , "pieces" : pieces }
-    return render (reqeust,'music/masterpieces.html',context)
+    return render (request,'music/masterpieces.html',context)
 
 
