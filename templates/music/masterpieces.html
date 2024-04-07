@@ -41,7 +41,7 @@
                   <ul class="pagination">
                     {% if pieces.has_previous %}
                     <li class="page-item">
-                      <a href="?page={{ composers.previous_page_number }}" class="page-link" aria-label="Previous">First
+                      <a href="?page={{ pieces.previous_page_number }}" class="page-link" aria-label="Previous">First
                         <span aria-hidden="true">
                           <span class="lnr lnr-chevron-left"></span>
                         </span>
@@ -59,7 +59,7 @@
 
                     {% if pieces.has_next %}
                     <li class="page-item">
-                      <a href="?page={{ composers.next_page_number }}" class="page-link" aria-label="Next">Last
+                      <a href="?page={{ pieces.next_page_number }}" class="page-link" aria-label="Next">Last
                         <span aria-hidden="true">
                           <span class="lnr lnr-chevron-right"></span>
                         </span>
@@ -76,43 +76,6 @@
     </div>
   </div>
 </div>
-
-<!-- 
-<nav class="blog-pagination justify-content-center d-flex">
-  <ul class="pagination">
-    {% if pieces.has_previous %}
-    <li class="page-item">
-      <a href="?page={{ composers.previous_page_number }}" class="page-link" aria-label="Previous">First
-        <span aria-hidden="true">
-          <span class="lnr lnr-chevron-left"></span>
-        </span>
-      </a>
-    </li>
-    {% endif %}
-
-    {% for i in pieces.paginator.page_range %}
-    {% if pieces.number == i %}
-    <li class="page-item active "><a href="?page={{i}}" class="page-link">{{i}}</a></li>
-    {% else %}
-    <li class="page-item"><a href="?page={{i}}" class="page-link">{{i}}</a></li>
-    {% endif %}
-    {% endfor %}
-
-    {% if pieces.has_next %}
-    <li class="page-item">
-      <a href="?page={{ composers.next_page_number }}" class="page-link" aria-label="Next">Last
-        <span aria-hidden="true">
-          <span class="lnr lnr-chevron-right"></span>
-        </span>
-      </a>
-    </li>
-    {% endif %}
-  </ul>
-</nav>
- -->
-
-
-
 
 
 {% endblock content %}
