@@ -11,7 +11,7 @@
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 </head>
 
-<body data-bs-theme="dark">
+<body data-bs-theme="light">
     <nav class="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
         <div class="container-fluid">
             <a class="navbar-brand" href="{% url 'website:index' %}">Soundseyf</a>
@@ -64,7 +64,7 @@
             <div class="row">
                 <div class="col-md-8 col-md-10 mx-auto">
                     <div class="site-heading">
-                        <h3 class="site-heading my-4 mt-3 text-light">Welcome to Soundseyf's Blog community</h3>
+                        <h3 class="site-heading my-4 mt-3 text-dark">Welcome to Soundseyf's Blog community</h3>
                         <p class="text-dark">Be Safe With Seyf</p>
                     </div>
                 </div>
@@ -85,13 +85,28 @@
                     </div>
                 </div>
                 {% endfor %}
+
+                {% if is_paginated %}
+                <div class="pagination" style="padding-left: 45%;" >
+                    <span class="page-links">
+                        {% if page_obj.has_previous %}
+                        <a style="text-decoration: none;" href="?page={{ page_obj.previous_page_number }}">previous</a>
+                        {% endif %}
+                        <span class="page-current">
+                            Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }} ...
+                        </span>
+                        {% if page_obj.has_next %}
+                        <a style="text-decoration: none;" href="?page={{ page_obj.next_page_number }}">next</a>
+                        {% endif %}
+                    </span>
+                </div>
+                {% endif %}
             </div>
             {% block sidebar %}
             {% include 'blog/sidebar.html' %}
             {% endblock sidebar %}
         </div>
     </div>
-
 
 
     <footer class="py-3 bg-grey">

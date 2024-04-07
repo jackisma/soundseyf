@@ -27,7 +27,7 @@ def ComposerPieces(request,cid):
     all_composers = Composer.objects.all()
     current_composer = get_object_or_404(all_composers , pk = cid) 
     pieces = MasterPiece.objects.filter(composer = cid)
-    p = Paginator(pieces,10)
+    p = Paginator(pieces,5)
     try:
         page_number = request.GET.get('page')
         pieces = p.get_page(page_number)
