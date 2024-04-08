@@ -11,3 +11,7 @@ def index_view(request):
 def contact_view(request):
     return render (request , 'website/contact.html')
 
+
+
+def about_view(request):
+    return render (request , 'website/about.html')
