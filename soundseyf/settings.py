@@ -46,9 +46,22 @@ INSTALLED_APPS = [
     'sorl.thumbnail',
     'django.contrib.humanize',
     "debug_toolbar",
+    "sweetify",
+    'django.contrib.sites',
 
 ]
 
+# Django sites Framework
+SITE_ID = 1
+
+
+# django smtp email backend settings
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_USE_TLS = True
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'Alihunter4640@gmail.com'
+EMAIL_HOST_PASSWORD = 'umewmbhmmzimbqmy'
 
 
 MIDDLEWARE = [
@@ -159,3 +172,14 @@ INTERNAL_IPS = [
     "127.0.0.1",
     # ...
 ]
+
+
+# modelbackend django settings 
+AUTHENTICATION_BACKENDS = [
+    'accounts.custom_auth_backends.CustomAuthenticationBackend',
+    'django.contrib.auth.backends.ModelBackend',
+]
+
+
+# sweetify Notification setting
+SWEETIFY_SWEETALERT_LIBRARY = 'sweetalert2'

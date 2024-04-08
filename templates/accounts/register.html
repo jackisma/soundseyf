@@ -1,11 +1,36 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <title>Register</title>
+  <link rel="stylesheet" href="{% static 'css/styles2.css' %}" />
 </head>
+
 <body>
-    
+  <div class="background"></div>
+  <div class="card">
+    <img class="logo" src="{% static 'temp/logo.svg' %}" />
+    <h2>Welcome Back</h2>
+    <form class="form" action="{% url 'accounts:register' %}" method="post">
+      {% csrf_token %}
+      <input type="text" name="username" placeholder="Username"  required autofocus/>
+      <input type="email" name="email" placeholder="Email"  required autofocus/>
+      <input type="password" name="password1" placeholder="Password"  required />
+      <input type="password" name="password2" placeholder="Confirm Password" required>
+
+      <button type="submit">Sign up</button>
+    </form>
+    <footer>
+      have an account? Sign in
+      <a href="{% url 'accounts:login' %}">here</a>
+    </footer>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.6.5/sweetalert2.all.min.js"></script>
+
 </body>
+{% load sweetify %}
+{% sweetify %}
+
 </html>

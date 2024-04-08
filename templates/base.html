@@ -48,16 +48,20 @@
                         </ul>
                     </li>
                     <!-- Login and Register Buttons -->
-                    <!-- <li class="nav-item" style="padding-left: 90%;">
-                        <a class="nav-link btn btn-primary" href="#">Logout</a>
-                    </li> -->
+                    {% if request.user.is_authenticated %}
                     <li class="nav-item" style="padding-left: 120%;">
-                        <a class="nav-link btn btn-primary" href="#">Login</a>
+                        <a class="nav-link btn btn-primary" href="{% url 'accounts:logout' %}">Logout</a>
+                    </li>
+                    {% else %}
+                    <li class="nav-item" style="padding-left: 120%;">
+                        <a class="nav-link btn btn-primary" href="{% url 'accounts:login' %}">Login</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link btn btn-success" href="#">Register</a>
+                        <a class="nav-link btn btn-success" href="{% url 'accounts:register' %}">Register</a>
                     </li>
+                    {% endif %}
                 </ul>
+
                 <form class="d-flex" role="search">
                     <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
                     <button class="btn btn-outline-success" type="submit">Search</button>
@@ -70,7 +74,8 @@
     {% block content %}
     {% endblock content %}
 
-    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.6.5/sweetalert2.all.min.js"></script>
+
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
         integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
         crossorigin="anonymous"></script>
@@ -81,7 +86,9 @@
     <!-- integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" -->
     <!-- crossorigin="anonymous"></script> -->
 
-    
+
 </body>
 
 </html>
+{% load sweetify %}
+{% sweetify %}
