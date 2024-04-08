@@ -1,5 +1,4 @@
 from distutils.command import build
-from doctest import BLANKLINE_MARKER
 from email.mime import image
 from os import name
 from django.db import models

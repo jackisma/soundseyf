@@ -45,6 +45,8 @@ INSTALLED_APPS = [
     'taggit',
     'sorl.thumbnail',
     'django.contrib.humanize',
+    "debug_toolbar",
+
 ]
 
 
@@ -57,6 +59,8 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    "debug_toolbar.middleware.DebugToolbarMiddleware",
+
 ]
 
 ROOT_URLCONF = "soundseyf.urls"
@@ -147,3 +151,11 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 # taggit case INSENSITIVE option
 TAGGIT_CASE_INSENSITIVE = True
+
+
+
+INTERNAL_IPS = [
+    # ...
+    "127.0.0.1",
+    # ...
+]
