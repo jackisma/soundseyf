@@ -3,6 +3,9 @@ from django.contrib.auth import authenticate,login,logout
 from django.contrib.auth.decorators import login_required 
 from django.contrib.auth.forms import AuthenticationForm
 from .forms import UserCreationForm
+from django.views import View
+from django.views.generic import TemplateView
+from django.shortcuts import render
 import sweetify
 
 
@@ -40,6 +43,8 @@ def login_view(request):
 
 
 
+
+
 def signup_view(request):
      if not request.user.is_authenticated:
           if request.method == 'POST':
@@ -61,11 +66,20 @@ def signup_view(request):
          
                     
 
-# logout view function
-@login_required
-def logout_view(request):
-    logout(request)
-    sweetify.success(request, 'Logout successful!' , persistent = 'ok')
-    return redirect('/')
 
+
+
+class LogoutView(TemplateView, View):
+    template_name = 'accounts/logout.html'
+
+    def post(self, request, *args, **kwargs):
+        return self.log_out_user(request)
+
+    def log_out_user(self, request):
+        # Perform the actual logout logic here
+        # For example, you can use Django's built-in logout function
+        logout(request)
+
+          # Redirect to the desired page after logout with a Sweetify notification
+        return render(request, 'website/index.html')
 
