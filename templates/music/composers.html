@@ -11,11 +11,11 @@
         <div class="card mb-3" style="max-width: 540px; padding-top: 3%;">
           <div class="row g-0">
             <div class="col-md-4" style="padding-left: 1%;">
-              {% thumbnail composer.image "190x190" crop="center" as im %}
+              {% thumbnail composer.image "200x200" crop="center" as im %}
               <img src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}">
               {% endthumbnail %}
             </div>
-            <div class="col-md-8" style="padding-left: 3%;">
+            <div class="col-md-8" style="padding-left: 4%;">
               <div class="card-body">
                 <a href="{% url 'music:pieces' cid=composer.id %}" style="text-decoration: none;">
                   <h5 class="card-title" style="color:darkviolet">{{composer.name}}</h5>
