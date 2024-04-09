@@ -79,7 +79,7 @@ class LogoutView(TemplateView, View):
         # Perform the actual logout logic here
         # For example, you can use Django's built-in logout function
         logout(request)
-
+        sweetify.success(request,'logout successful',persistent = 'OK')
           # Redirect to the desired page after logout with a Sweetify notification
         return render(request, 'website/index.html')
 

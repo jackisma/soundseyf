@@ -14,9 +14,9 @@
     <h2>Welcome Back</h2>
     <form class="form" action="{% url 'accounts:register' %}" method="post">
       {% csrf_token %}
-      <input type="text" name="username" placeholder="Username"  required autofocus/>
-      <input type="email" name="email" placeholder="Email"  required autofocus/>
-      <input type="password" name="password1" placeholder="Password"  required />
+      <input type="text" name="username" placeholder="Username" required autofocus />
+      <input type="email" name="email" placeholder="Email" required autofocus />
+      <input type="password" name="password1" placeholder="Password" required />
       <input type="password" name="password2" placeholder="Confirm Password" required>
 
       <button type="submit">Sign up</button>

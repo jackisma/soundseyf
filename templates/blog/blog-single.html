@@ -49,6 +49,19 @@
                             <li><a class="dropdown-item" href="#">Your Favorites</a></li>
                         </ul>
                     </li>
+                    <!-- Login and Register Buttons -->
+                    {% if request.user.is_authenticated %}
+                    <li class="nav-item" style="padding-left: 120%;">
+                        <a class="nav-link btn btn-primary" href="{% url 'accounts:logout' %}">Logout</a>
+                    </li>
+                    {% else %}
+                    <li class="nav-item" style="padding-left: 120%;">
+                        <a class="nav-link btn btn-primary" href="{% url 'accounts:login' %}">Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link btn btn-success" href="{% url 'accounts:register' %}">Register</a>
+                    </li>
+                    {% endif %}
                 </ul>
                 <form class="d-flex" role="search">
                     <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
