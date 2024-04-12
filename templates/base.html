@@ -60,10 +60,9 @@
                         <a class="nav-link btn btn-success" href="{% url 'accounts:register' %}">Register</a>
                     </li>
                     {% endif %}
-                </ul>
-                
-                <form class="d-flex" role="search">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                </ul>   
+                <form method="get" class="d-flex" role="search"  action="{% url 'music:search' %}">
+                    <input class="form-control me-2" name="s" type="search" placeholder="Search Composer fullname" aria-label="Search" autocomplete="on">
                     <button class="btn btn-outline-success" type="submit">Search</button>
                 </form>
             </div>
