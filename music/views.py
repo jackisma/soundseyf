@@ -1,3 +1,4 @@
+from django.http import HttpResponse
 from django.shortcuts import render
 from .models import Composer, MasterPiece 
 from django.shortcuts import get_object_or_404
@@ -52,8 +53,11 @@ def composer_search(request):
         # python valrus
         if s := request.GET.get('s'):
             composers = composers.filter(name__contains=s)
+            if composers:
+                 context = {'composers' : composers}
+                 return render(request , 'music/composers.html' , context)   
+            else:
+               return render(request,'404.html')
 
-    context = {'composers' : composers}
-    return render(request , 'music/composers.html' , context)   
 
 
