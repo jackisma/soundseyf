@@ -1,5 +1,6 @@
+from pickle import NONE
 from django.http import HttpResponse
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 from .models import Composer, MasterPiece 
 from django.shortcuts import get_object_or_404
 from django.core.paginator import Paginator,EmptyPage,PageNotAnInteger
@@ -58,6 +59,8 @@ def composer_search(request):
                  return render(request , 'music/composers.html' , context)   
             else:
                return render(request,'404.html')
+        else:
+            return redirect('/')
 
 
 
