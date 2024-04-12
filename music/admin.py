@@ -16,7 +16,7 @@ class MasterPiecesAdmin(admin.ModelAdmin):
 
 # Showing Pieces Table in ORM admin panel 
 class ComposersAdmin(admin.ModelAdmin):
-    list_display = ('name',)
+    list_display = ('name','nationality')
     list_filter = ('name',)
     empty_value_display = "-empty-"
     search_fields = ('name',)
