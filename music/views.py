@@ -10,7 +10,7 @@ from django.core.paginator import Paginator,EmptyPage,PageNotAnInteger
 def ComposersView(request):
     composers = Composer.objects.all()
 
-    p = Paginator(composers,8)
+    p = Paginator(composers,10)
     try:
         page_number = request.GET.get('page')
         composers = p.get_page(page_number)
