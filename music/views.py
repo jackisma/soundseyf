@@ -4,7 +4,7 @@ from django.shortcuts import get_object_or_404
 from django.core.paginator import Paginator,EmptyPage,PageNotAnInteger
 
 
-
+# Composers List View
 def ComposersView(request):
     composers = Composer.objects.all()
 
@@ -22,7 +22,7 @@ def ComposersView(request):
 
 
 
-
+# Composers Pieces List View
 def ComposerPieces(request,cid):
     all_composers = Composer.objects.all()
     current_composer = get_object_or_404(all_composers , pk = cid) 
@@ -37,5 +37,8 @@ def ComposerPieces(request,cid):
         pieces = pieces.get_page(1)
     context = {"composer" : current_composer , "pieces" : pieces }
     return render (request,'music/masterpieces.html',context)
+
+
+
 
 

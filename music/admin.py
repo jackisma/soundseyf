@@ -2,7 +2,7 @@ from django.contrib import admin
 from .models import * 
 
 
-
+# Showing Pieces Table in ORM admin panel 
 class MasterPiecesAdmin(admin.ModelAdmin):
     list_display = ('song_id','name','composer')
     list_filter = ('composer',)
@@ -14,6 +14,7 @@ class MasterPiecesAdmin(admin.ModelAdmin):
 
 
 
+# Showing Pieces Table in ORM admin panel 
 class ComposersAdmin(admin.ModelAdmin):
     list_display = ('name',)
     list_filter = ('name',)

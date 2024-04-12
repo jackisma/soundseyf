@@ -3,7 +3,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User 
 
 
-# over writing the django user creation form for signing up users and adding email field
+# Over Writing Django's User Creation Form for adding Email field
 class UserCreationForm(UserCreationForm):
     email = forms.EmailField(required=True,label='email') 
     class Meta:

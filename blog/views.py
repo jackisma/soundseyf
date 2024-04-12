@@ -4,8 +4,7 @@ from .models import Post
 from django.views import generic
 from django.utils import timezone
 
-
-
+# Blog Home Post's List View Class Created by Django's Listview
 class PostList(generic.ListView):
     now = timezone.now()
     queryset = Post.objects.filter(status='p' , published_on__lte=now).order_by('-created_on')
@@ -14,6 +13,8 @@ class PostList(generic.ListView):
     template_name = "blog/blog-home.html" 
 
 
+
+# Blog Single View Class Created by Django's Detailview
 class DetailView(generic.DetailView):
     model = Post 
     template_name = "blog/blog-single.html"

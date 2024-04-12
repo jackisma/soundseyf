@@ -4,7 +4,7 @@ from os import name
 from django.db import models
 from taggit.managers import TaggableManager
 
-
+# Composer Table 
 class Composer(models.Model):
     name = models.CharField(max_length=255,null=True,blank=True)
     biography = models.TextField(null=True, blank=True)
@@ -18,7 +18,7 @@ class Composer(models.Model):
 
 
 
-
+# Pieces Table
 class MasterPiece(models.Model):
     composer = models.ForeignKey(Composer , on_delete=models.CASCADE,null=True)
     song_id = models.AutoField(primary_key=True)

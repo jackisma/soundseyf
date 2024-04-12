@@ -3,13 +3,14 @@ from django.db import models
 from django.contrib.auth.models import User 
 
 
-
+# Defining some Status choices for Status Field that is Placed in Post table
 STATUS_CHOICES = {
     "d" : "Draft" , 
     "p" : "Published",
     "w" : "Withdrawn",
 }
 
+# Post Model Table For blog -- CONTAINS META DATA CLASS 
 class Post(models.Model):
     title = models.CharField(max_length=255,unique=True)
     slug = models.SlugField(max_length=255,unique=True)

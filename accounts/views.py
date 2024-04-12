@@ -9,7 +9,7 @@ from django.shortcuts import render
 import sweetify
 
 
-# # login view function
+# Login View Function
 def login_view(request):
     if not request.user.is_authenticated:
         if request.method == 'POST':
@@ -44,7 +44,7 @@ def login_view(request):
 
 
 
-
+# Signup View Function
 def signup_view(request):
      if not request.user.is_authenticated:
           if request.method == 'POST':
@@ -68,7 +68,7 @@ def signup_view(request):
 
 
 
-
+# Logout View Class 
 class LogoutView(TemplateView, View):
     template_name = 'accounts/logout.html'
 
