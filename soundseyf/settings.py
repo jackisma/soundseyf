@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     "sweetify",
     'django.contrib.sites',
     'captcha',
+    'django_extensions',
 ]
 
 # Django sites Framework
