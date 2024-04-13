@@ -48,7 +48,7 @@ INSTALLED_APPS = [
     "debug_toolbar",
     "sweetify",
     'django.contrib.sites',
-
+    'captcha',
 ]
 
 # Django sites Framework

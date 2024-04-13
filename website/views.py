@@ -1,6 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 from music.models import * 
-
+from .forms import * 
+import sweetify
 
 # Home index view Function
 def index_view(request):
@@ -11,7 +12,22 @@ def index_view(request):
 
 # Contact view Function
 def contact_view(request):
-    return render (request , 'website/contact.html')
+   if request.method == 'POST':
+      form = ContactForm(request.POST)
+      if form.is_valid():
+         form.save()       
+         sweetify.success(request,'your message has been sent',persistent = 'OK')
+      else:
+         sweetify.error(request,'your ticket doesn\'t  post',persistent = ':(')
+
+      
+   form = ContactForm(request.POST)
+   context = {'form': form}
+   return render(request , 'website/contact.html',context)
+
+
+
+
 
 
 # About view Function

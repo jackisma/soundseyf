@@ -30,6 +30,7 @@ urlpatterns = [
     path('music/',include("music.urls")),
     path("__debug__/", include("debug_toolbar.urls")),
     path('accounts/' , include("accounts.urls")),
+    path('captcha/', include('captcha.urls')),
     ############################## Django Reset Password System ##############################
     path('reset_password/', auth_views.PasswordResetView.as_view(),name="password_reset"), # reset password form
     path('reset_password_sent/',auth_views.PasswordResetDoneView.as_view(),name="password_reset_done"), # reset password data sent
