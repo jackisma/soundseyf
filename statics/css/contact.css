@@ -290,7 +290,5 @@ input:checked+.slider:before {
 
 }
 .btn-bottom-right {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
+  position: absolute;
 }

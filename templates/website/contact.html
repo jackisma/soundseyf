@@ -15,7 +15,6 @@
     <div class="contact-container">
         <div class="left-col">
             <!-- <img class="logo" src="{% static 'images/logo-white.png' %}" /> -->
-            <!-- <img style="padding-left: 10%; padding-top: 10%; " src="{% static 'images/yepes.jpg' %}" alt=""> -->
         </div>
         <div class="right-col">
             <div class="theme-switch-wrapper">
@@ -28,7 +27,6 @@
 
             <h1>Contact us</h1>
             <p>Were Are Here to listen to your speeches. so whenever you can share your thoughts with us</p>
-
             <form id="contact-form" method="post" action="{% url 'website:contact' %}">
                 {% csrf_token %}
                 <label for="name">Full name</label>
@@ -42,13 +40,10 @@
                 {{form.captcha}}
                 <button type="submit" name="submit">Send</button>
             </form>
+            <a href="{% url 'website:index' %}"><button class="btn-bottom-right">Back to Home</button></a>
         </div>
     </div>
-    <button type="button" class="btn btn-success">Success</button>
-
     <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.6.5/sweetalert2.all.min.js"></script>
-
-
     <!-- Image credit: Oliver Sjöström https://www.pexels.com/photo/body-of-water-near-green-mountain-931018/  -->
     <script src="{% static 'js/contact.js' %}"></script>
 </body>
