@@ -11,7 +11,7 @@
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 </head>
 
-<body data-bs-theme="light">
+<body data-bs-theme="dark">
     <nav class="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
         <div class="container-fluid">
             <a class="navbar-brand" href="{% url 'website:index' %}">Soundseyf</a>
@@ -62,7 +62,7 @@
                     {% endif %}
                 </ul>
                 <form class="d-flex"  method="get" action="{% url 'blog:search' %}">
-                    <input name="s" class="form-control me-2" type="text" placeholder="Search" aria-label="Search">
+                    <input name="s" class="form-control me-2" type="text" placeholder="Search in Content" aria-label="Search">
                     <button class="btn btn-outline-success" type="submit">Search</button>
                 </form>
             </div>
