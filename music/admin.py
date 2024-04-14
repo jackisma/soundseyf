@@ -5,7 +5,7 @@ from .models import *
 # Showing Pieces Table in ORM admin panel 
 class MasterPiecesAdmin(admin.ModelAdmin):
     list_display = ('song_id','name','composer')
-    list_filter = ('composer',)
+    list_filter = ('composer', 'tags')
     empty_value_display = "-empty-"
     search_fields = ('name','composer')
     save_as = True 
@@ -17,7 +17,7 @@ class MasterPiecesAdmin(admin.ModelAdmin):
 # Showing Pieces Table in ORM admin panel 
 class ComposersAdmin(admin.ModelAdmin):
     list_display = ('name','nationality')
-    list_filter = ('name',)
+    list_filter = ('name','genre')
     empty_value_display = "-empty-"
     search_fields = ('name',)
     save_as = True 

@@ -2,19 +2,20 @@
 {% load static %}
 {% load thumbnail %}
 {% block content %}
-    <div id="carouselExample" class="carousel slide" data-bs-ride="carousel" data-interval="1000">
-        <div class="carousel-inner">
-          <div class="carousel-item active">
+
+<div id="carouselExample" class="carousel slide" data-bs-ride="carousel" data-interval="500">
+    <div class="carousel-inner">
+        <div class="carousel-item active">
             <img src="{% static 'images/andres.jpg' %}" class="d-block w-100" alt="...">
-          </div>
-          <div class="carousel-item">
-            <img src="{% static 'images/paco.jpg' %}" class="d-block w-100" alt="...">
-          </div>
-          <div class="carousel-item">
-            <img src="{% static 'images/dyens.jpg' %}" class="d-block w-100" alt="...">
-          </div>
         </div>
-        <!-- <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+        <div class="carousel-item">
+            <img src="{% static 'images/paco.jpg' %}" class="d-block w-100" alt="...">
+        </div>
+        <div class="carousel-item">
+            <img src="{% static 'images/dyens.jpg' %}" class="d-block w-100" alt="...">
+        </div>
+    </div>
+    <!-- <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
           <span class="carousel-control-prev-icon" aria-hidden="true"></span>
           <span class="visually-hidden">Previous</span>
         </button>
@@ -22,57 +23,57 @@
           <span class="carousel-control-next-icon" aria-hidden="true"></span>
           <span class="visually-hidden">Next</span>
         </button> -->
-      </div>
-    <hr>
-    <!-- ############################################## Cards ############################################### -->
-    <h2 style="padding-left: 10%; padding-top: 2%; font-family:verdana"> Guitar's geniuses </h2>
-    <div class="container" style="padding-left: 2%;">
-        <div class="row" style="padding-top: 2%; padding-left: 5%;">
-            <div class="card" style="width: 18rem;">
-                <img src="{% static 'images/andres.jpg' %}" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                        card's content.</p>
-                    <a href="#" class="btn btn-primary">Read More</a>
-                </div>
+</div>
+<hr>
+<!-- ############################################## Cards ############################################### -->
+<h2 style="padding-left: 10%; padding-top: 2%; font-family:verdana"> Guitar's geniuses </h2>
+<div class="container" style="padding-left: 2%;">
+    <div class="row" style="padding-top: 2%; padding-left: 5%;">
+        <div class="card" style="width: 18rem;">
+            <img src="{% static 'images/andres.jpg' %}" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                    card's content.</p>
+                <a href="#" class="btn btn-primary">Read More</a>
             </div>
+        </div>
 
-            <div class="card" style="width: 18rem;">
-                <img src="{% static 'images/dyens.jpg' %}" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                        card's content.</p>
-                    <a href="#" class="btn btn-primary">Read More</a>
-                </div>
+        <div class="card" style="width: 18rem;">
+            <img src="{% static 'images/dyens.jpg' %}" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                    card's content.</p>
+                <a href="#" class="btn btn-primary">Read More</a>
             </div>
+        </div>
 
-            <div class="card" style="width: 18rem;">
-                <img src="{% static 'images/dyens.jpg' %}" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                        card's content.</p>
-                    <a href="#" class="btn btn-primary">Read More</a>
-                </div>
+        <div class="card" style="width: 18rem;">
+            <img src="{% static 'images/dyens.jpg' %}" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                    card's content.</p>
+                <a href="#" class="btn btn-primary">Read More</a>
             </div>
+        </div>
 
-            <div class="card" style="width: 18rem;">
-                <img src="{% static 'images/paco.jpg' %}" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                        card's content.</p>
-                    <a href="#" class="btn btn-primary">Read More</a>
-                </div>
+        <div class="card" style="width: 18rem;">
+            <img src="{% static 'images/paco.jpg' %}" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                    card's content.</p>
+                <a href="#" class="btn btn-primary">Read More</a>
             </div>
         </div>
     </div>
-    <hr>
-    <!-- ############################################## Cards ############################################### -->
-    <h2 style="padding-left: 10%; padding-top: 2%; font-family:verdana"> Guitar's MasterPieces </h2>
-    <!-- <div class="container" style="padding-left: 2%;">
+</div>
+<hr>
+<!-- ############################################## Cards ############################################### -->
+<h2 style="padding-left: 10%; padding-top: 2%; font-family:verdana"> Guitar's MasterPieces </h2>
+<!-- <div class="container" style="padding-left: 2%;">
         <div class="row" style="padding-top: 2%; padding-left: 5%;">
             {% for piece in pieces %}
             <div class="card" style="width: 18rem; padding-left: 2%;">
@@ -90,50 +91,50 @@
             {% endfor %}
         </div>
     </div> -->
-    <hr>
-    <!-- ############################################## Cards ############################################### -->
-    <h2 style="padding-left: 10%; padding-top: 2%; font-family:verdana text-center"> Your Favorite pieces </h2>
-    <div class="container" style="padding-left: 2%;">
-        <div class="row" style="padding-top: 2%; padding-left: 5%;">
-            <div class="card" style="width: 18rem;">
-                <img src="{% static 'images/andres.jpg' %}" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                        card's content.</p>
-                    <a href="#" class="btn btn-primary">Read More</a>
-                </div>
+<hr>
+<!-- ############################################## Cards ############################################### -->
+<h2 style="padding-left: 10%; padding-top: 2%; font-family:verdana text-center"> Your Favorite pieces </h2>
+<div class="container" style="padding-left: 2%;">
+    <div class="row" style="padding-top: 2%; padding-left: 5%;">
+        <div class="card" style="width: 18rem;">
+            <img src="{% static 'images/andres.jpg' %}" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                    card's content.</p>
+                <a href="#" class="btn btn-primary">Read More</a>
             </div>
+        </div>
 
-            <div class="card" style="width: 18rem;">
-                <img src="{% static 'images/dyens.jpg' %}" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                        card's content.</p>
-                    <a href="#" class="btn btn-primary">Read More</a>
-                </div>
+        <div class="card" style="width: 18rem;">
+            <img src="{% static 'images/dyens.jpg' %}" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                    card's content.</p>
+                <a href="#" class="btn btn-primary">Read More</a>
             </div>
+        </div>
 
-            <div class="card" style="width: 18rem;">
-                <img src="{% static 'images/dyens.jpg' %}" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                        card's content.</p>
-                    <a href="#" class="btn btn-primary">Read More</a>
-                </div>
+        <div class="card" style="width: 18rem;">
+            <img src="{% static 'images/dyens.jpg' %}" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                    card's content.</p>
+                <a href="#" class="btn btn-primary">Read More</a>
             </div>
+        </div>
 
-            <div class="card" style="width: 18rem;">
-                <img src="{% static 'images/paco.jpg' %}" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                        card's content.</p>
-                    <a href="#" class="btn btn-primary">Read More</a>
-                </div>
+        <div class="card" style="width: 18rem;">
+            <img src="{% static 'images/paco.jpg' %}" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                    card's content.</p>
+                <a href="#" class="btn btn-primary">Read More</a>
             </div>
         </div>
     </div>
- {% endblock content %}
+</div>
+{% endblock content %}
