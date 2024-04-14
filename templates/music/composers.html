@@ -4,9 +4,29 @@
 {% block content %}
 <style>
   .card {
-      box-shadow: 0 16px 48px #6a6a6b;
+    box-shadow: 0 16px 48px #6a6a6b;
+  }
+
+  .quote-card {
+    margin-top: 30px;
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  .quote-text {
+    font-size: 18px;
+    font-style: italic;
+    color: #555;
+  }
+
+  .quote-author {
+    margin-top: 10px;
+    font-weight: bold;
   }
 </style>
+
 <div class="container">
   <div class="row">
     <div class="col-md-8 card mb-4 mt-3 left top" style="padding-left: 0%;">
@@ -66,33 +86,63 @@
         </ul>
       </nav>
     </div>
-    <!-- Sidebar with quotes -->
+    <!-- Sidebar with quotes and blog about -->
     <div class="col-md-4 card mb-4 mt-3" style="padding-left: 0%;">
       <div class="container">
+        <!-- Composer Quotes -->
         <div class="card mb-3" style="max-width: 540px; padding-top: 3%;">
           <div class="row g-0">
             <div class="col-md-12" style="padding-left: 1%;">
               <div class="card-body">
                 <h5 class="card-title" style="color: darkviolet;">Composer Quotes</h5>
                 <ul style="list-style-type: none; padding-left: 0;">
-                  <li style="padding-top: 3%;"><strong>Andrés Segovia:</strong> "The guitar is a small orchestra. It is polyphonic. Every string is a different color, a different voice."</li>
-                  <li style="padding-top: 3%;"><strong>Frédéric Chopin:</strong> "Nothing is more beautiful than a guitar, except, possibly two."</li>
-                  <li style="padding-top: 3%;"><strong>Andrés Segovia:</strong> "The guitar is the easiest instrument to play and the hardest to play well."</li>
-                  <li style="padding-top: 3%;" ><strong>Paco de lucia:</strong> "With the guitar I've suffered a great deal, but when I've had a good time, the suffering seemed worthwhile."</li>
+                  <li class="quote-card">
+                    <div class="quote-text">
+                      "The guitar is a small orchestra. It is polyphonic. Every string is a different color, a different
+                      voice."
+                    </div>
+                    <div class="quote-author">
+                      - Andrés Segovia
+                    </div>
+                  </li>
+                  <li class="quote-card">
+                    <div class="quote-text">
+                      "Nothing is more beautiful than a guitar, except, possibly two."
+                    </div>
+                    <div class="quote-author">
+                      - Frédéric Chopin
+                    </div>
+                  </li>
+                  <li class="quote-card">
+                    <div class="quote-text">
+                      "The guitar is the easiest instrument to play and the hardest to play well."
+                    </div>
+                    <div class="quote-author">
+                      - Andrés Segovia
+                    </div>
+                  </li>
+                  <li class="quote-card">
+                    <div class="quote-text">
+                      "With the guitar I've suffered a great deal, but when I've had a good time, the suffering seemed worthwhile."
+                    </div>
+                    <div class="quote-author">
+                      - Paco de Lucía
+                    </div>
+                  </li>
                 </ul>
               </div>
             </div>
           </div>
         </div>
-        <!-- Additional component -->
+        <!-- Blog About -->
         <div class="card mb-4">
           <h5 class="card-header">About</h5>
           <div class="card-body">
-              <p class="card-text">Blog App Created By Django And Designed By BootsWatch Theme for UI - 
-                  you can also visit My website ....
-              </p>
-              <a href="https://bekbrace.com" class="btn btn-danger">Visit Website</a>
-              <a href="https://docs.djangoproject.com/en/3.1" class="btn btn-secondary">Django Docs</a>
+            <p class="card-text">Blog App Created By Django And Designed By BootsWatch Theme for UI -
+              you can also visit My website ....
+            </p>
+            <a href="https://bekbrace.com" class="btn btn-danger">Visit Website</a>
+            <a href="https://docs.djangoproject.com/en/3.1" class="btn btn-secondary">Django Docs</a>
           </div>
         </div>
       </div>
@@ -100,4 +150,4 @@
   </div>
 </div>
 
-{% endblock content %}
+{% endblock %}
