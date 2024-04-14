@@ -30,3 +30,15 @@ class DetailView(generic.DetailView):
         context['next_post'] = next_post 
         return context 
     
+
+
+def blog_search(request):
+    now = timezone.now()
+    posts = Post.objects.filter(status = 'p' , published_on__lte=now)
+    if request.method == 'GET':
+        if s := request.GET.get('s'):
+            posts = posts.filter(content__contains=s)
+            print(posts)
+    
+    context = {'post_list' : posts}
+    return render(request , 'blog/blog-home.html' , context)   
