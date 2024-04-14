@@ -33,3 +33,18 @@
     color: #17a2b8; /* Light blue color */
   }
   
+
+  .special-footer {
+    position: relative; /* Setting the footer position to relative */
+  }
+  
+  .footer-logo {
+    position: absolute; /* Positioning the logo absolutely within the footer */
+    top: 10px; /* Adjust the top spacing as needed */
+    left: 10px; /* Adjust the left spacing as needed */
+  }
+  
+  .footer-logo img {
+    width: 180px; /* Adjust the width of the logo as needed */
+    height: auto; /* Maintain aspect ratio */
+  }
