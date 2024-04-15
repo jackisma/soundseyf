@@ -3,177 +3,164 @@
 {% load thumbnail %}
 {% block content %}
 <style>
-  .card {
-    box-shadow: 0 16px 48px #6a6a6b;
-    margin-bottom: 0; /* Remove bottom margin */
+  /* Add your custom styles here */
+  .composer-card {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s ease;
+  }
+
+  .composer-card:hover {
+    transform: translateY(-5px);
+  }
+
+  .composer-image {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+  }
+
+  .composer-details {
+    padding: 20px;
+  }
+
+  .composer-name {
+    font-size: 1.5rem;
+    color: #333;
+    margin-bottom: 10px;
+  }
+
+  .composer-genre {
+    font-size: 1rem;
+    color: #666;
+    margin-bottom: 15px;
+  }
+
+  .composer-bio {
+    font-size: 1rem;
+    color: #777;
+    margin-bottom: 20px;
+  }
+
+  .composer-button {
+    background-color: #6c5ce7;
+    color: #fff;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 5px;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+  }
+
+  .composer-button:hover {
+    background-color: #5936a8;
   }
 
   .quote-card {
-    margin-top: 0; /* Remove top margin */
-    padding: 20px;
     background-color: #f8f9fa;
     border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-bottom: 20px;
   }
 
   .quote-text {
-    font-size: 18px;
     font-style: italic;
     color: #555;
-    margin-bottom: 0; /* Remove bottom margin */
+    margin-bottom: 10px;
   }
 
   .quote-author {
-    margin-top: 10px;
     font-weight: bold;
-    margin-bottom: 0; /* Remove bottom margin */
+    color: #888;
   }
 
-  .quote-card:last-child {
-    margin-bottom: 0; /* Remove bottom margin for the last quote card */
+  .about-section {
+    background-color: #f8f9fa;
+    padding: 40px;
+    border-radius: 10px;
+    margin-top: 30px;
   }
 
-  .card-body {
-    padding: 20px !important; /* Add !important to override any existing padding */
+  .about-header {
+    font-size: 1.5rem;
+    color: #333;
+    margin-bottom: 20px;
   }
 
-  .blog-pagination {
-    margin-top: 0; /* Remove top margin */
+  .about-text {
+    font-size: 1rem;
+    color: #777;
+    margin-bottom: 20px;
   }
 
-  /* Adjusting padding for columns */
-  .composers-column {
-    padding-left: 0; /* Remove left padding */
-    background-color: transparent; /* Remove background margin */
+  .visit-website-button {
+    background-color: #ff6b6b;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
   }
 
-  .sidebar-column {
-    padding-right: 0; /* Remove right padding */
-    background-color: transparent; /* Remove background margin */
+  .visit-website-button:hover {
+    background-color: #e74c3c;
   }
 </style>
 
 <div class="container">
-  <div class="row align-items-start">
-    <div class="col-md-8 card mb-4 mt-3 composers-column" style="padding-left: 0;">
-      <div class="container">
+  <div class="row">
+    <div class="col-md-8">
+      <h2 class="mb-4">Meet Our Composers</h2>
+      <div class="row">
         {% for composer in composers %}
-        <div class="card mb-3" style="max-width: 540px; padding-top: 3%;">
-          <div class="row g-0">
-            <div class="col-md-4" style="padding-left: 1%;">
-              {% thumbnail composer.image "200x200" crop="center" as im %}
-              <img src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}">
-              {% endthumbnail %}
-            </div>
-            <div class="col-md-8" style="padding-left: 4%;">
-              <div class="card-body">
-                <a href="{% url 'music:pieces' cid=composer.id %}" style="text-decoration: none;">
-                  <h5 class="card-title" style="color:darkviolet">{{composer.name}}</h5>
-                </a>
-                <p class="card-text">{{composer.biography|truncatewords:20}}</p>
-                <h6 style="color:black;">{{composer.genre}}</h6>
-                <a href="{% url 'music:pieces' cid=composer.id %}"><button
-                    class="btn btn-outline-danger">Get</button></a>
-              </div>
+        <div class="col-md-6 mb-4">
+          <div class="card composer-card">
+            <img src="{% thumbnail composer.image "600x400" crop="center" as im %}{{ im.url }}{% endthumbnail %}"
+              alt="{{ composer.name }}" class="card-img-top composer-image">
+            <div class="composer-details">
+              <h3 class="card-title composer-name">{{ composer.name }}</h3>
+              <p class="card-text composer-bio">{{ composer.biography|truncatewords:30 }}</p>
+              <p class="composer-genre"><strong>Genre:</strong> {{ composer.genre }}</p>
+              <a href="{% url 'music:pieces' cid=composer.id %}"
+                class="btn btn-primary composer-button">Get Pieces</a>
             </div>
           </div>
         </div>
         {% endfor %}
       </div>
-      <nav class="blog-pagination justify-content-center d-flex">
-        <ul class="pagination">
-          {% if composers.has_previous %}
-          <li class="page-item">
-            <a href="?page={{ composers.previous_page_number }}" class="page-link" aria-label="Previous">First
-              <span aria-hidden="true">
-                <span class="lnr lnr-chevron-left"></span>
-              </span>
-            </a>
-          </li>
-          {% endif %}
-
-          {% for i in composers.paginator.page_range %}
-          {% if composers.number == i %}
-          <li class="page-item active "><a href="?page={{i}}" class="page-link">{{i}}</a></li>
-          {% else %}
-          <li class="page-item"><a href="?page={{i}}" class="page-link">{{i}}</a></li>
-          {% endif %}
-          {% endfor %}
-
-          {% if composers.has_next %}
-          <li class="page-item">
-            <a href="?page={{ composers.next_page_number }}" class="page-link" aria-label="Next">Last
-              <span aria-hidden="true">
-                <span class="lnr lnr-chevron-right"></span>
-              </span>
-            </a>
-          </li>
-          {% endif %}
-        </ul>
-      </nav>
     </div>
-    <!-- Sidebar with quotes and blog about -->
-    <div class="col-md-4 card mb-4 mt-3 sidebar-column" style="padding-right: 0;">
-      <div class="container">
-        <!-- Composer Quotes -->
-        <div class="card mb-3" style="max-width: 540px; padding-top: 3%;">
-          <div class="row g-0">
-            <div class="col-md-12" style="padding-left: 1%;">
-              <div class="card-body">
-                <h5 class="card-title" style="color: darkviolet;">Composer Quotes</h5>
-                <ul style="list-style-type: none; padding-left: 0;">
-                  <li class="quote-card">
-                    <div class="quote-text">
-                      "The guitar is a small orchestra. It is polyphonic. Every string is a different color, a different
-                      voice."
-                    </div>
-                    <div class="quote-author">
-                      - Andrés Segovia
-                    </div>
-                  </li>
-                  <li class="quote-card">
-                    <div class="quote-text">
-                      "Nothing is more beautiful than a guitar, except, possibly two."
-                    </div>
-                    <div class="quote-author">
-                      - Frédéric Chopin
-                    </div>
-                  </li>
-                  <li class="quote-card">
-                    <div class="quote-text">
-                      "The guitar is the easiest instrument to play and the hardest to play well."
-                    </div>
-                    <div class="quote-author">
-                      - Andrés Segovia
-                    </div>
-                  </li>
-                  <li class="quote-card">
-                    <div class="quote-text">
-                      "With the guitar I've suffered a great deal, but when I've had a good time, the suffering seemed worthwhile."
-                    </div>
-                    <div class="quote-author">
-                      - Paco de Lucía
-                    </div>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- Blog About -->
-        <div class="card mb-4">
-          <h5 class="card-header">About</h5>
-          <div class="card-body">
-            <p class="card-text">Blog App Created By Django And Designed By BootsWatch Theme for UI -
-              you can also visit My website ....
-            </p>
-            <a href="https://bekbrace.com" class="btn btn-danger">Visit Website</a>
-            <a href="https://docs.djangoproject.com/en/3.1" class="btn btn-secondary">Django Docs</a>
-          </div>
-        </div>
+    <div class="col-md-4">
+      <div class="quote-card">
+        <h3 class="mb-4">Composer Quotes</h3>
+        <ul class="list-unstyled">
+          <li>
+            <p class="quote-text">"The guitar is a small orchestra. It is polyphonic. Every string is a different color, a different voice."</p>
+            <p class="quote-author">- Andrés Segovia</p>
+          </li>
+          <li>
+            <p class="quote-text">"Nothing is more beautiful than a guitar, except, possibly two."</p>
+            <p class="quote-author">- Frédéric Chopin</p>
+          </li>
+          <li>
+            <p class="quote-text">"The guitar is the easiest instrument to play and the hardest to play well."</p>
+            <p class="quote-author">- Andrés Segovia</p>
+          </li>
+          <li>
+            <p class="quote-text">"With the guitar I've suffered a great deal, but when I've had a good time, the suffering seemed worthwhile."</p>
+            <p class="quote-author">- Paco de Lucía</p>
+          </li>
+        </ul>
+      </div>
+      <div class="about-section">
+        <h3 class="about-header">About</h3>
+        <p class="about-text">Blog App Created By Django And Designed By BootsWatch Theme for UI - you can also visit My website ....</p>
+        <a href="https://bekbrace.com" class="btn btn-danger visit-website-button">Visit Website</a>
+        <a href="https://docs.djangoproject.com/en/3.1" class="btn btn-secondary visit-website-button">Django Docs</a>
       </div>
     </div>
   </div>
 </div>
-
 {% endblock %}
