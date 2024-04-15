@@ -121,7 +121,7 @@
             <img src="{% thumbnail composer.image "600x400" crop="center" as im %}{{ im.url }}{% endthumbnail %}"
               alt="{{ composer.name }}" class="card-img-top composer-image">
             <div class="composer-details">
-              <h3 class="card-title composer-name">{{ composer.name }}</h3>
+              <a style="text-decoration: none;" href="{% url 'music:pieces' cid=composer.id %}"><h3 class="card-title composer-name">{{ composer.name }}</h3></a>
               <p class="card-text composer-bio">{{ composer.biography|truncatewords:30 }}</p>
               <p class="composer-genre"><strong>Genre:</strong> {{ composer.genre }}</p>
               <a href="{% url 'music:pieces' cid=composer.id %}"
