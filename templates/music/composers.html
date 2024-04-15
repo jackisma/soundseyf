@@ -5,10 +5,11 @@
 <style>
   .card {
     box-shadow: 0 16px 48px #6a6a6b;
+    margin-bottom: 0; /* Remove bottom margin */
   }
 
   .quote-card {
-    margin-top: 30px;
+    margin-top: 0; /* Remove top margin */
     padding: 20px;
     background-color: #f8f9fa;
     border-radius: 10px;
@@ -19,17 +20,42 @@
     font-size: 18px;
     font-style: italic;
     color: #555;
+    margin-bottom: 0; /* Remove bottom margin */
   }
 
   .quote-author {
     margin-top: 10px;
     font-weight: bold;
+    margin-bottom: 0; /* Remove bottom margin */
+  }
+
+  .quote-card:last-child {
+    margin-bottom: 0; /* Remove bottom margin for the last quote card */
+  }
+
+  .card-body {
+    padding: 20px !important; /* Add !important to override any existing padding */
+  }
+
+  .blog-pagination {
+    margin-top: 0; /* Remove top margin */
+  }
+
+  /* Adjusting padding for columns */
+  .composers-column {
+    padding-left: 0; /* Remove left padding */
+    background-color: transparent; /* Remove background margin */
+  }
+
+  .sidebar-column {
+    padding-right: 0; /* Remove right padding */
+    background-color: transparent; /* Remove background margin */
   }
 </style>
 
 <div class="container">
-  <div class="row">
-    <div class="col-md-8 card mb-4 mt-3 left top" style="padding-left: 0%;">
+  <div class="row align-items-start">
+    <div class="col-md-8 card mb-4 mt-3 composers-column" style="padding-left: 0;">
       <div class="container">
         {% for composer in composers %}
         <div class="card mb-3" style="max-width: 540px; padding-top: 3%;">
@@ -87,7 +113,7 @@
       </nav>
     </div>
     <!-- Sidebar with quotes and blog about -->
-    <div class="col-md-4 card mb-4 mt-3" style="padding-left: 0%;">
+    <div class="col-md-4 card mb-4 mt-3 sidebar-column" style="padding-right: 0;">
       <div class="container">
         <!-- Composer Quotes -->
         <div class="card mb-3" style="max-width: 540px; padding-top: 3%;">
