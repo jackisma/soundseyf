@@ -24,6 +24,7 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <!-- Navigation buttons -->
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="{% url 'website:index' %}">Home</a>
                     </li>
@@ -49,13 +50,30 @@
                             <li><a class="dropdown-item" href="#">Your Favorites</a></li>
                         </ul>
                     </li>
-                    <!-- Login and Register Buttons -->
+                </ul>
+                <!-- Search form -->
+                <form style="padding-left: 45%;" method="get" class="d-flex me-auto" role="search" action="{% url 'music:search' %}">
+                    <input class="form-control me-2" name="s" type="search" placeholder="Search Composer fullname"
+                        aria-label="Search" autocomplete="on">
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>
+                <ul class="navbar-nav ms-auto">
+                    <!-- Dropdown menu for user options (only shown when logged in) -->
                     {% if request.user.is_authenticated %}
-                    <li class="nav-item" style="padding-left: 120%;">
-                        <a class="nav-link btn btn-primary" href="{% url 'accounts:logout' %}">Logout</a>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            {{ request.user.username }}
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+                            <li><a class="dropdown-item" href="#">Listen Later</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="{% url 'accounts:logout' %}">Logout</a></li>
+                        </ul>
                     </li>
                     {% else %}
-                    <li class="nav-item" style="padding-left: 120%;">
+                    <!-- Show login and register buttons when not logged in -->
+                    <li class="nav-item">
                         <a class="nav-link btn btn-primary" href="{% url 'accounts:login' %}">Login</a>
                     </li>
                     <li class="nav-item">
@@ -63,13 +81,10 @@
                     </li>
                     {% endif %}
                 </ul>
-                <form class="d-flex"  method="get" action="{% url 'blog:search' %}">
-                    <input name="s" class="form-control me-2" type="text" placeholder="Search in Content" aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit">Search</button>
-                </form>
             </div>
         </div>
     </nav>
+
 
     <div class="container">
         <div class="row">
