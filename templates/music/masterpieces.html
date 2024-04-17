@@ -82,6 +82,63 @@
     margin-bottom: 10px;
     display: block;
   }
+  /* Styling for the audio player */
+.audio-player {
+  width: 100%; /* Ensure full width */
+}
+
+/* Style the audio controls */
+.audio-player audio {
+  width: 100%; /* Make the audio player fill its container */
+}
+
+/* Style the audio player when it's being hovered over */
+.audio-player audio:hover {
+  opacity: 0.8; /* Reduce opacity on hover */
+}
+
+/* Style the audio player when it's being played */
+.audio-player audio[controls]::-webkit-media-controls-panel {
+  background-color: rgba(52, 52, 52, 0.8); /* Dark overlay on media controls */
+  border-radius: 8px; /* Rounded corners for media controls */
+}
+
+/* Style the audio player progress bar */
+.audio-player audio::-webkit-media-controls-progress-bar {
+  background-color: transparent; /* Transparent background for progress bar */
+}
+
+/* Style the audio player progress bar value */
+.audio-player audio::-webkit-media-controls-current-time-display,
+.audio-player audio::-webkit-media-controls-time-remaining-display {
+  color: #fff; /* White text color for time display */
+  font-size: 12px; /* Font size for time display */
+}
+
+/* Style the audio player volume control */
+.audio-player audio::-webkit-media-controls-volume-slider {
+  width: 80px; /* Adjust volume slider width */
+}
+
+/* Style the audio player volume control thumb */
+.audio-player audio::-webkit-media-controls-volume-slider::-webkit-media-slider-thumb {
+  background-color: #fff; /* White color for volume slider thumb */
+  border: 2px solid #fff; /* White border for volume slider thumb */
+}
+
+/* Style the audio player volume control track */
+.audio-player audio::-webkit-media-controls-volume-slider::-webkit-media-slider-container {
+  height: 8px; /* Adjust volume slider track height */
+  border-radius: 4px; /* Rounded corners for volume slider track */
+  background-color: rgba(255, 255, 255, 0.5); /* Semi-transparent white for volume slider track */
+}
+
+/* Style the audio player volume control track fill */
+.audio-player audio::-webkit-media-controls-volume-slider::-webkit-media-slider-thumb {
+  background-color: #fff; /* White color for volume slider thumb */
+  border: 2px solid #fff; /* White border for volume slider thumb */
+}
+
 </style>
 
 <div class="container">
@@ -103,9 +160,13 @@
           <hr>
           {% for piece in pieces %}
           <div class="piece-name">{{ piece.name }}</div>
-          <audio controls>
-            <source src="/media/{{ piece.song }}" type="audio/mp3">
-          </audio>
+          <div class="audio-player">
+            <audio controls>
+              <source src="/media/{{ piece.song }}" type="audio/mp3">
+              Your browser does not support the audio element.
+            </audio>
+          </div>
+          
           <hr>
           {% endfor %}
 
