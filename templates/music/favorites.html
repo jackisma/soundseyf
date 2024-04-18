@@ -1,0 +1,15 @@
+<!-- favorites.html -->
+{% extends "base.html" %}
+{% block content %}
+<div class="container">
+    <h2>Favorites</h2>
+    <ul>
+        {% for composer in liked_composers %}
+            <li>{{ composer.name }}</li>
+            <!-- Add other composer details as needed -->
+        {% empty %}
+            <li>No favorite composers found.</li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}

@@ -125,6 +125,16 @@
               <a style="text-decoration: none;" href="{% url 'music:pieces' cid=composer.id %}"><h3 class="card-title composer-name">{{ composer.name }}</h3></a>
               <p class="card-text composer-bio">{{ composer.biography|truncatewords:30 }}</p>
               <p class="composer-genre"><strong>Genre:</strong> {{ composer.genre }}</p>
+              <form action="{% url 'music:Favorites' composer_id=composer.id %}" method="post">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-link composer-like-button" aria-label="Favorite Composer">
+                  {% if composer.id in favorited_composer_ids %}
+                    <i class="fas fa-heart text-danger"></i> <!-- Filled heart icon if composer is favorited by the user -->
+                  {% else %}
+                    <i class="far fa-heart"></i> <!-- Empty heart icon by default -->
+                  {% endif %}
+                </button>
+              </form>
               <a href="{% url 'music:pieces' cid=composer.id %}"
                 class="btn btn-primary composer-button">Get Pieces</a>
             </div>

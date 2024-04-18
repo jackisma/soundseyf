@@ -25,7 +25,17 @@ class ComposersAdmin(admin.ModelAdmin):
     search_help_text = f'search in: {". ".join(search_fields)}'
 
 
+class FavoriteComposerAdmin(admin.ModelAdmin):
+    list_display = ('user','composer')
+    list_filter = ('user',)
+    empty_value_display = "-empty-"
+    search_fields = ('user',)
+    save_as = True 
+    save_on_top = True 
+    search_help_text = f'search in: {". ".join(search_fields)}'
+
 
 
 admin.site.register(MasterPiece,MasterPiecesAdmin)
 admin.site.register(Composer,ComposersAdmin)
+admin.site.register(FavoriteComposer,FavoriteComposerAdmin)

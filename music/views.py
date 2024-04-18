@@ -1,15 +1,15 @@
 from pickle import NONE
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import redirect, render
-from .models import Composer, MasterPiece 
+from .models import *
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import get_object_or_404
 from django.core.paginator import Paginator,EmptyPage,PageNotAnInteger
-
+from django.urls import reverse
 
 # Composers List View
 def ComposersView(request):
     composers = Composer.objects.all()
-
     p = Paginator(composers,10)
     try:
         page_number = request.GET.get('page')
@@ -18,6 +18,7 @@ def ComposersView(request):
         composers = composers.get_page(1)
     except PageNotAnInteger:
         composers = composers.get_page(1)
+
 
     context = {"composers": composers}
     return render(request,'music/composers.html',context)
@@ -64,3 +65,20 @@ def composer_search(request):
 
 
 
+
+@login_required
+def favorite_composer(request, composer_id):
+    composer = get_object_or_404(Composer, pk=composer_id)
+    favorite, created = FavoriteComposer.objects.get_or_create(user=request.user, composer=composer)
+    if not created:
+        favorite.delete()  # Remove the composer from favorites if it's already favorited
+    return HttpResponseRedirect(reverse('music:composers'))  # Redirect to composer list page after favoriting
+
+
+
+
+@login_required
+def FavoritesView(request):
+    # Retrieve liked composers associated with the current user
+    liked_composers = Composer.objects.filter(favoritecomposer__user=request.user)
+    return render(request, 'music/favorites.html', {'liked_composers': liked_composers})

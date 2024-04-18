@@ -3,6 +3,8 @@ from email.mime import image
 from os import name
 from django.db import models
 from taggit.managers import TaggableManager
+from django.contrib.auth.models import User
+
 
 # Composer Table 
 class Composer(models.Model):
@@ -30,3 +32,14 @@ class MasterPiece(models.Model):
 
     def __str__(self):
         return '{}'.format(self.name)
+    
+
+class FavoriteComposer(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    composer = models.ForeignKey(Composer, on_delete=models.CASCADE)    
+
+    def __str__(self):
+        return '{}'.format(self.user)
+    
+
+    
