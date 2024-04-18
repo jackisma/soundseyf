@@ -3,30 +3,41 @@
 <html lang="en">
 
 <head>
-  <title>Logins</title>
-  <link rel="stylesheet" href="{% static 'css/styles2.css' %}" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="{% static 'css/styles2.css' %}">
+  <title>Login</title>
 </head>
 
 <body>
-  <div class="background"></div>
-  <div class="card">
-    <img class="logo" src="{% static 'temp/logo.svg' %}" />
-    <h2>Welcome Back</h2>
-    <form class="form" action="{% url 'accounts:login' %}" method="post">
-      {% csrf_token %}
-      <input type="text" name="username" placeholder="Username or Email" />
-      <input type="password" name="password" placeholder="Password" />
-      <button type="submit">Sign In</button>
-      <p><a style="text-decoration: none;" href="{% url 'password_reset' %}">Forgotten your password?</a></p>
+  <div class="container right-panel-active">
+    <!-- Sign In -->
+    <div class="container__form container--signin">
+      <form action="{% url 'accounts:login' %}" class="form" method="post">
+        {% csrf_token %}
+        <h2 class="form__title">Sign In</h2>
+        <input type="text" name="username" placeholder="Email or Username" class="input" />
+        <input type="password" name="password" placeholder="Password" class="input" />
+        <a href="{% url 'password_reset' %}" class="link">Forgot your password?</a>
+        <button type="submit" class="btn">Sign In</button>
+      </form>
+    </div>
+    <!-- <h2><a href="{% url 'accounts:register' %}">Need an account? Sign up here</a></h2> -->
 
-    </form>
-    <footer>
-      Need an account? Sign up
-      <a href="{% url 'accounts:register' %}">here</a>
-    </footer>
+    <!-- Overlay -->
+    <div class="container__overlay">
+      <div class="overlay">
+        <div class="overlay__panel overlay--left">
+          <button class="btn" id="signIn">Right</button>
+        </div>
+        <div class="overlay__panel overlay--right">
+          <button class="btn" id="signUp">Left</button>
+        </div>
+      </div>
+    </div>
   </div>
-
   <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.6.5/sweetalert2.all.min.js"></script>
+  <script defer src="{% static 'js/main.js' %}"></script>
 
 </body>
 {% load sweetify %}

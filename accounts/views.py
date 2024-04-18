@@ -54,7 +54,7 @@ def signup_view(request):
                     sweetify.success(request,'signup successful',persistent = 'OK')
                     return redirect('/')
                else:
-                    sweetify.error(request,'signup not successful',persistent = ':(')
+                    sweetify.error(request,'signup not successful Please select a strong password',persistent = ':(')
                     return render(request, 'accounts/register.html')
           else:
                form = UserCreationForm()

@@ -3,31 +3,42 @@
 <html lang="en">
 
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="{% static 'css/styles2.css' %}">
   <title>Register</title>
-  <link rel="stylesheet" href="{% static 'css/styles2.css' %}" />
 </head>
 
 <body>
-  <div class="background"></div>
-  <div class="card">
-    <img class="logo" src="{% static 'temp/logo.svg' %}" />
-    <h2>Welcome Back</h2>
-    <form class="form" action="{% url 'accounts:register' %}" method="post">
-      {% csrf_token %}
-      <input type="text" name="username" placeholder="Username" required autofocus />
-      <input type="email" name="email" placeholder="Email" required autofocus />
-      <input type="password" name="password1" placeholder="Password" required />
-      <input type="password" name="password2" placeholder="Confirm Password" required>
-
-      <button type="submit">Sign up</button>
-    </form>
-    <footer>
-      have an account? Sign in
+  <div class="container right-panel-active">
+    <!-- Sign Up -->
+    <div class="container__form container--signin">
+      <form method="post" action="{% url 'accounts:register' %}" class="form" > 
+        {% csrf_token %}
+        <h2 class="form__title">Sign Up</h2>
+        <input type="text" placeholder="Username" name="username" class="input" required autofocus />
+        <input type="email" placeholder="Email" name="email" class="input" required autofocus />
+        <input type="password" name="password1" placeholder="Password" class="input" />
+        <input type="password" name="password2" placeholder="Confirm Password" class="input" />
+        <button type="submit" class="btn">Sign Up</button>
+      </form>
       <a href="{% url 'accounts:login' %}">here</a>
-    </footer>
-  </div>
+    </div>
 
+    <!-- Overlay -->
+    <div class="container__overlay">
+      <div class="overlay">
+        <div class="overlay__panel overlay--left">
+          <button class="btn" id="signIn">Right</button>
+        </div>
+        <div class="overlay__panel overlay--right">
+          <button class="btn" id="signUp">Left</button>
+        </div>
+      </div>
+    </div>
+  </div>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.6.5/sweetalert2.all.min.js"></script>
+  <script defer src="{% static 'js/main.js' %}"></script>
 
 </body>
 {% load sweetify %}
