@@ -3,27 +3,34 @@
 
 {% block content %}
 <div class="container">
-  <h2 class="text-center mb-4">Favorite Composers</h2>
+ 
+  <div style="background-color: #461e56; border: 1px solid #000000; border-radius: 5px; padding: 20px;">
+    <h2 class="text-center mb-4" style="font-size: 3.5rem; font-family: 'Oswald', sans-serif; color: #ffffff; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);">Favorite Composers</h2>
+  </div>
   <div class="row">
     {% if liked_composers %}
       {% for composer in liked_composers %}
         <div class="col-md-4 mb-4">
-          <div class="card composer-card">
-            <img src="{% thumbnail composer.image "600x400" crop="center" as im %}{{ im.url }}{% endthumbnail %}"
-              alt="{{ composer.name }}" class="card-img-top composer-image">
-            <div class="composer-details">
-              <a style="text-decoration: none;" href="{% url 'music:pieces' cid=composer.id %}">
+          <div class="card composer-card" style="border: 1px solid #ddd; border-radius: 5px; padding: 15px;">
+            {% if composer.image %}
+              <img src="{% thumbnail composer.image "600x400" crop="center" as im %}{{ im.url }}{% endthumbnail %}"
+                alt="{{ composer.name }}" class="card-img-top composer-image" style="border-radius: 5px; width: 100%;">
+            {% else %}
+              <div class="no-image-placeholder" style="background-color: #eee; height: 200px; border-radius: 5px;"></div>
+            {% endif %}
+            <div class="composer-details" style="padding: 15px 0;">
+              <a href="{% url 'music:pieces' cid=composer.id %}" class="composer-name-link" style="text-decoration: none; color: #333;">
                 <h3 class="card-title composer-name">{{ composer.name }}</h3>
               </a>
               <p class="card-text composer-bio">{{ composer.biography|truncatewords:30 }}</p>
               <p class="composer-genre"><strong>Genre:</strong> {{ composer.genre }}</p>
               <form action="{% url 'music:Favorites' composer_id=composer.id %}" method="post">
                 {% csrf_token %}
-                <button type="submit" class="btn btn-link composer-like-button" aria-label="Remove from Favorites">
+                <button type="submit" class="btn btn-link composer-like-button" aria-label="Remove from Favorites" style="padding: 0;">
                   <i class="fas fa-heart text-danger"></i> <!-- Remove icon to indicate removing from favorites -->
                 </button>
               </form>
-              <a href="{% url 'music:pieces' cid=composer.id %}" class="btn btn-primary composer-button">Get Pieces</a>
+              <a href="{% url 'music:pieces' cid=composer.id %}" class="btn btn-primary composer-button" style="margin-top: 10px;">Get Pieces</a>
             </div>
           </div>
         </div>
