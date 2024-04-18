@@ -1,15 +1,38 @@
-<!-- favorites.html -->
 {% extends "base.html" %}
+{% load thumbnail %}
+
 {% block content %}
 <div class="container">
-    <h2>Favorites</h2>
-    <ul>
-        {% for composer in liked_composers %}
-            <li>{{ composer.name }}</li>
-            <!-- Add other composer details as needed -->
-        {% empty %}
-            <li>No favorite composers found.</li>
-        {% endfor %}
-    </ul>
+  <h2 class="text-center mb-4">Favorite Composers</h2>
+  <div class="row">
+    {% if liked_composers %}
+      {% for composer in liked_composers %}
+        <div class="col-md-4 mb-4">
+          <div class="card composer-card">
+            <img src="{% thumbnail composer.image "600x400" crop="center" as im %}{{ im.url }}{% endthumbnail %}"
+              alt="{{ composer.name }}" class="card-img-top composer-image">
+            <div class="composer-details">
+              <a style="text-decoration: none;" href="{% url 'music:pieces' cid=composer.id %}">
+                <h3 class="card-title composer-name">{{ composer.name }}</h3>
+              </a>
+              <p class="card-text composer-bio">{{ composer.biography|truncatewords:30 }}</p>
+              <p class="composer-genre"><strong>Genre:</strong> {{ composer.genre }}</p>
+              <form action="{% url 'music:Favorites' composer_id=composer.id %}" method="post">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-link composer-like-button" aria-label="Remove from Favorites">
+                  <i class="fas fa-heart text-danger"></i> <!-- Remove icon to indicate removing from favorites -->
+                </button>
+              </form>
+              <a href="{% url 'music:pieces' cid=composer.id %}" class="btn btn-primary composer-button">Get Pieces</a>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    {% else %}
+      <div class="col">
+        <p class="text-center">No favorite composers found.</p>
+      </div>
+    {% endif %}
+  </div>
 </div>
 {% endblock %}

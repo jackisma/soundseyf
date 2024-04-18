@@ -70,13 +70,15 @@ def composer_search(request):
 
 
 
+
 @login_required
 def favorite_composer(request, composer_id):
     composer = get_object_or_404(Composer, pk=composer_id)
     favorite, created = FavoriteComposer.objects.get_or_create(user=request.user, composer=composer)
     if not created:
         favorite.delete()  # Remove the composer from favorites if it's already favorited
-    return HttpResponseRedirect(reverse('music:composers'))  # Redirect to composer list page after favoriting
+    # Redirect back to the same page where the action was initiated
+    return redirect(request.META.get('HTTP_REFERER', 'music:composers'))
 
 
 
@@ -85,4 +87,5 @@ def favorite_composer(request, composer_id):
 def FavoritesView(request):
     # Retrieve liked composers associated with the current user
     liked_composers = Composer.objects.filter(favoritecomposer__user=request.user)
+    # Render the favorites.html template with the liked composers
     return render(request, 'music/favorites.html', {'liked_composers': liked_composers})
