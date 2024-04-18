@@ -18,10 +18,14 @@ def ComposersView(request):
         composers = composers.get_page(1)
     except PageNotAnInteger:
         composers = composers.get_page(1)
+    if request.user.is_authenticated:
+         favorited_composer_ids = set(request.user.favoritecomposer_set.values_list('composer__id', flat=True))
+         context = {"composers": composers, "favorited_composer_ids": favorited_composer_ids}
+         return render(request,'music/composers.html',context)
 
-
-    context = {"composers": composers}
-    return render(request,'music/composers.html',context)
+    else:
+         context = {"composers": composers}
+         return render(request,'music/composers.html',context)
 
 
 
