@@ -22,7 +22,7 @@ Daniel*/
 body {
 	align-items: center;
 	background-color: var(--white);
-	background: url("img.jpg");
+	background: url("../images/img.jpg");
 	background-attachment: fixed;
 	background-position: center;
 	background-repeat: no-repeat;
