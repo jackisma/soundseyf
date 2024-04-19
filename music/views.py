@@ -55,17 +55,20 @@ def ComposerPieces(request,cid):
 # search view For Home index That User can Search and find a specifc Composer 
 def composer_search(request):
     composers = Composer.objects.all()
+    
     if request.method == 'GET':
-        # python valrus
-        if s := request.GET.get('s'):
-            composers = composers.filter(name__contains=s)
-            if composers:
-                 context = {'composers' : composers}
-                 return render(request , 'music/composers.html' , context)   
+        search_query = request.GET.get('s', '')
+        if search_query:
+            composers = composers.filter(name__icontains=search_query)
+            context = {'composers': composers}
+            if request.user.is_authenticated:
+                favorited_composer_ids = set(request.user.favoritecomposer_set.values_list('composer__id', flat=True))
+                context = {"composers": composers, "favorited_composer_ids": favorited_composer_ids}
+                return render(request,'music/composers.html',context)
             else:
-               return render(request,'404.html')
-        else:
-            return redirect('/')
+                return render(request, 'music/composers.html', context)
+
+    return render(request, 'music/composers.html', {'composers': []})
 
 
 
