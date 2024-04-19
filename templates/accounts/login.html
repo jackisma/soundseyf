@@ -6,6 +6,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="{% static 'css/styles2.css' %}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
   <title>Login</title>
 </head>
 
@@ -17,13 +18,15 @@
         {% csrf_token %}
         <h2 class="form__title">Sign In</h2>
         <input type="text" name="username" placeholder="Email or Username" class="input" />
-        <input type="password" name="password" placeholder="Password" class="input" />
+        <input type="password" name="password" placeholder="Password" class="input" id="password" />
+        <span class="eye-toggle far fa-eye field-icon toggle-password" toggle="#password"></span>
         <a href="{% url 'password_reset' %}" class="link">Forgot your password?</a>
         <button type="submit" class="btn">Sign In</button>
-        <a style="padding-top: 5%; text-decoration:none; color:rgb(7, 29, 54)" href="{% url 'accounts:register' %}">Need an account? Sign up here.</a>
+        <a style="padding-top: 5%; text-decoration:none; color:rgb(7, 29, 54)" href="{% url 'accounts:register' %}">Need
+          an account? Sign up here.</a>
       </form>
     </div>
-    
+
 
     <!-- Overlay -->
     <div class="container__overlay">
@@ -39,6 +42,21 @@
   </div>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.6.5/sweetalert2.all.min.js"></script>
   <script defer src="{% static 'js/main.js' %}"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script>
+    $(document).ready(function () {
+      $(".toggle-password").click(function () {
+        $(this).toggleClass("fa-eye fa-eye-slash");
+        var input = $($(this).attr("toggle"));
+        if (input.attr("type") === "password") {
+          input.attr("type", "text");
+        } else {
+          input.attr("type", "password");
+        }
+      });
+    });
+  </script>
+
 
 </body>
 {% load sweetify %}
