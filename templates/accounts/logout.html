@@ -15,7 +15,7 @@
     <div class="container__form container--signin">
       <form action="{% url 'accounts:logout' %}" class="form" method="post">
         {% csrf_token %}
-        <h2 class="form__title">Are You Sure To Logout?</h2>
+        <h2 class="form__title">Are you sure to Logout?</h2>
         <a href="{% url 'website:index' %}" class="link">Back Here</a>
         <button type="submit" class="btn">Logout</button>
       </form>
