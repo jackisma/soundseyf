@@ -6,23 +6,28 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="{% static 'css/styles2.css' %}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
   <title>Register</title>
+  <style></style>
 </head>
 
 <body>
   <div class="container right-panel-active">
     <!-- Sign Up -->
     <div class="container__form container--signin">
-      <form method="post" action="{% url 'accounts:register' %}" class="form" > 
+      <form method="post" action="{% url 'accounts:register' %}" class="form">
         {% csrf_token %}
         <h2 class="form__title">Sign Up</h2>
         <input type="text" placeholder="Username" name="username" class="input" required autofocus />
         <input type="email" placeholder="Email" name="email" class="input" required autofocus />
-        <input type="password" name="password1" placeholder="Password" class="input" />
-        <input type="password" name="password2" placeholder="Confirm Password" class="input" />
+        <!-- Password fields with eye icons -->
+        <input type="password" name="password1" placeholder="Password" class="input password" id="password1" />
+        <span class="eye-toggle far fa-eye field-icon toggle-password" toggle="#password1"></span>
+        <input type="password" name="password2" placeholder="Confirm Password" class="input password" id="password2" />
+        <span class="eye-toggle far fa-eye field-icon toggle-password" toggle="#password2"></span>
         <button type="submit" class="btn">Sign Up</button>
-        <a style="padding-top: 5%; text-decoration:none; color:rgb(7, 29, 54)" href="{% url 'accounts:login' %}">Have an account? Login here.</a>
-
+        <a style="padding-top: 5%; text-decoration:none; color:rgb(7, 29, 54)" href="{% url 'accounts:login' %}">Have an
+          account? Login here.</a>
       </form>
     </div>
 
@@ -38,9 +43,20 @@
       </div>
     </div>
   </div>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.6.5/sweetalert2.all.min.js"></script>
-  <script defer src="{% static 'js/main.js' %}"></script>
-
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script>
+    $(document).ready(function () {
+      $(".toggle-password").click(function () {
+        $(this).toggleClass("fa-eye fa-eye-slash");
+        var input = $($(this).attr("toggle"));
+        if (input.attr("type") === "password") {
+          input.attr("type", "text");
+        } else {
+          input.attr("type", "password");
+        }
+      });
+    });
+  </script>
 </body>
 {% load sweetify %}
 {% sweetify %}
