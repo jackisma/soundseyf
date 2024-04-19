@@ -68,7 +68,7 @@ def composer_search(request):
             else:
                 return render(request, 'music/composers.html', context)
 
-    return render(request, 'music/composers.html', {'composers': []})
+    return redirect(request.META.get('HTTP_REFERER', 'music:composers'))
 
 
 
