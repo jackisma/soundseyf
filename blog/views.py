@@ -1,5 +1,5 @@
 from typing import Any
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from .models import Post 
 from django.views import generic
 from django.utils import timezone
@@ -41,4 +41,4 @@ def blog_search(request):
             print(posts)
     
     context = {'post_list' : posts}
-    return render(request , 'blog/blog-home.html' , context)   
+    return redirect(request.META.get('HTTP_REFERER'))
