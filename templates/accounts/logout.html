@@ -1,48 +1,43 @@
 {% load static %}
-
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Logout</title>
   <link rel="stylesheet" href="{% static 'css/styles2.css' %}">
+  <title>Logout</title>
 </head>
-<body>
-  <div class="container">
-    <div class="right-panel-active text-center">
-      <div class="container__form container--signin">
-        <div class="box">
-          <h2>Are you sure you want to logout?</h2>
-          <form method="post">
-            {% csrf_token %}
-            <div class="form">
-              <button type="submit" class="btn btn-danger">Logout</button>
-            </div>
-          </form>
-          <p>If not, click <a href="{% url 'accounts:login' %}">here</a> to return.</p>
-        </div>
-      </div>
-      <!-- Logout button moved down -->
 
-      <!-- Overlay -->
-      <div class="container__overlay">
-        <div class="overlay">
-          <div class="overlay__panel overlay--left">
-            <button class="btn" id="signIn">Right</button>
-          </div>
-          <div class="overlay__panel overlay--right">
-            <button class="btn" id="signUp">Left</button>
-          </div>
+<body>
+  <div class="container right-panel-active">
+    <!-- Sign In -->
+    <div class="container__form container--signin">
+      <form action="{% url 'accounts:logout' %}" class="form" method="post">
+        {% csrf_token %}
+        <h2 class="form__title">Are You Sure To Logout?</h2>
+        <a href="{% url 'website:index' %}" class="link">Back Here</a>
+        <button type="submit" class="btn">Logout</button>
+      </form>
+    </div>
+
+    <!-- Overlay -->
+    <div class="container__overlay">
+      <div class="overlay">
+        <div class="overlay__panel overlay--left">
+          <button class="btn" id="signIn">Right</button>
+        </div>
+        <div class="overlay__panel overlay--right">
+          <button class="btn" id="signUp">Left</button>
         </div>
       </div>
     </div>
   </div>
-
   <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.6.5/sweetalert2.all.min.js"></script>
   <script defer src="{% static 'js/main.js' %}"></script>
 
-  {% load sweetify %}
-  {% sweetify %}
 </body>
+{% load sweetify %}
+{% sweetify %}
+
 </html>
