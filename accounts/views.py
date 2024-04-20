@@ -2,6 +2,7 @@ from django.shortcuts import render,redirect
 from django.contrib.auth import authenticate,login,logout
 from django.contrib.auth.decorators import login_required 
 from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth.models import User
 from .forms import UserCreationForm
 from django.views import View
 from django.views.generic import TemplateView
@@ -46,23 +47,28 @@ def login_view(request):
 
 # Signup View Function
 def signup_view(request):
-     if not request.user.is_authenticated:
-          if request.method == 'POST':
-               form = UserCreationForm(request.POST)
-               if form.is_valid():
+    if not request.user.is_authenticated:
+        if request.method == 'POST':
+            form = UserCreationForm(request.POST)
+            if form.is_valid():
+                email = form.cleaned_data['email']
+                # Check if username or email already exists
+                if User.objects.filter(email=email).exists():
+                    sweetify.error(request, 'Signup not successful. Email address already registered.', persistent=':(')
+                    return render(request, 'accounts/register.html', {'form': form})
+                else:
                     form.save()
-                    sweetify.success(request,'signup successful',persistent = 'OK')
+                    sweetify.success(request, 'Signup successful', persistent='OK')
                     return redirect('/')
-               else:
-                    sweetify.error(request,'signup not successful Please select a strong password',persistent = ':(')
-                    return render(request, 'accounts/register.html')
-          else:
-               form = UserCreationForm()
-               context = {'form' : form}
-               return render(request, 'accounts/register.html' , context)
-               
-     else:
-          return redirect('/')
+            else:
+                sweetify.error(request, 'Signup not successful. Please Check your Email , Password and Username!', persistent=':(')
+                return render(request, 'accounts/register.html', {'form': form})
+        else:
+            form = UserCreationForm()
+            context = {'form': form}
+            return render(request, 'accounts/register.html', context)
+    else:
+        return redirect('/')
          
                     
 
