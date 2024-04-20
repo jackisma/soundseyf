@@ -24,19 +24,19 @@
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <!-- Navigation buttons -->
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="{% url 'website:index' %}">Home</a>
+                        <a class="nav-link {% if 'http://127.0.0.1:8000' in request.path %}active{% endif %}" aria-current="page" href="{% url 'website:index' %}">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'website:contact' %}">Contact</a>
+                        <a class="nav-link {% if '/contact/' in request.path %}active{% endif %}" href="{% url 'website:contact' %}">Contact</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'website:about' %}">About</a>
+                        <a class="nav-link {% if '/about/' in request.path %}active{% endif %}" href="{% url 'website:about' %}">About</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'blog:blog-home' %}">Blog</a>
+                        <a class="nav-link {% if '/blog/' in request.path %}active{% endif %}" href="{% url 'blog:blog-home' %}">Blog</a>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                        <a class="nav-link {% if '/music/' in request.path %}active{% endif %}" href="#" role="button" data-bs-toggle="dropdown"
                             aria-expanded="false">
                             Music
                         </a>
@@ -45,14 +45,16 @@
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
-                            <li><a class="dropdown-item" href="#">Your Favorites</a></li>
+                            <li><a class="dropdown-item" href="#">Flamenco Palos</a></li>
                         </ul>
                     </li>
                 </ul>
                 <!-- Search form -->
-                <form style="padding-left: 45%;" method="get" class="d-flex me-auto" role="search" action="{% url 'blog:search' %}">
-                    <input class="form-control me-2" name="s" type="search" placeholder="Search In Content"
-                        aria-label="Search" autocomplete="on">
+                <form style="padding-left: 45%;" method="get" class="d-flex me-auto" role="search"
+                    action="{% url 'music:search' %}">
+                    <input class="form-control me-2" name="s" type="search" placeholder="Search Composer fullname"
+                        aria-label="Search" list="composer-list">
+                    <datalist id="composer-list"></datalist> <!-- Empty datalist for autocomplete suggestions -->
                     <button class="btn btn-outline-success" type="submit">Search</button>
                 </form>
                 <ul class="navbar-nav ms-auto">
@@ -64,8 +66,10 @@
                             {{ request.user.username }}
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
-                            <li><a class="dropdown-item" href="#">Listen Later</a></li>
-                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="{% url 'music:Likes' %}">Favorites</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
                             <li><a class="dropdown-item" href="{% url 'accounts:logout' %}">Logout</a></li>
                         </ul>
                     </li>
@@ -82,7 +86,7 @@
             </div>
         </div>
     </nav>
-
+    
 
 
     <header class="masthead">
