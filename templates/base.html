@@ -33,20 +33,24 @@
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <!-- Navigation buttons -->
                     <li class="nav-item">
-                        <a class="nav-link {% if request.path == '/' %}active{% endif %}" aria-current="page" href="{% url 'website:index' %}">Home</a>
+                        <a class="nav-link {% if request.path == '/' %}active{% endif %}" aria-current="page"
+                            href="{% url 'website:index' %}">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link {% if '/contact/' in request.path %}active{% endif %}" href="{% url 'website:contact' %}">Contact</a>
+                        <a class="nav-link {% if '/contact/' in request.path %}active{% endif %}"
+                            href="{% url 'website:contact' %}">Contact</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link {% if '/about' in request.path %}active{% endif %}" href="{% url 'website:about' %}">About</a>
+                        <a class="nav-link {% if '/about' in request.path %}active{% endif %}"
+                            href="{% url 'website:about' %}">About</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link {% if '/blog/' in request.path %}active{% endif %}" href="{% url 'blog:blog-home' %}">Blog</a>
+                        <a class="nav-link {% if '/blog/' in request.path %}active{% endif %}"
+                            href="{% url 'blog:blog-home' %}">Blog</a>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link {% if '/music/' in request.path %}active{% endif %}" href="#" role="button" data-bs-toggle="dropdown"
-                            aria-expanded="false">
+                        <a class="nav-link dropdown-toggle dropdown-toggle-arrow {% if '/music/' in request.path %}active{% endif %}"
+                            href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Music
                         </a>
                         <ul class="dropdown-menu">
@@ -95,7 +99,7 @@
             </div>
         </div>
     </nav>
-    
+
     {% block content %}
     {% endblock content %}
 

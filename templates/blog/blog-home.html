@@ -45,10 +45,10 @@
                             href="{% url 'blog:blog-home' %}">Blog</a>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link {% if '/music/' in request.path %}active{% endif %}" href="#" role="button"
-                            data-bs-toggle="dropdown" aria-expanded="false">
-                            Music
-                        </a>
+                        <a class="nav-link dropdown-toggle dropdown-toggle-arrow {% if '/music/' in request.path %}active{% endif %}"
+                        href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Music
+                    </a>
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="{% url 'music:composers' %}">Composers</a></li>
                             <li>
