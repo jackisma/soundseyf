@@ -27,7 +27,7 @@
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <!-- Navigation buttons -->
                     <li class="nav-item">
-                        <a class="nav-link {% if '/' in request.path %}active{% endif %}" aria-current="page" href="{% url 'website:index' %}">Home</a>
+                        <a class="nav-link {% if request.path == '/' %}active{% endif %}" aria-current="page" href="{% url 'website:index' %}">Home</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link {% if '/contact/' in request.path %}active{% endif %}" href="{% url 'website:contact' %}">Contact</a>
