@@ -38,7 +38,7 @@ class FavoriteComposerAdmin(admin.ModelAdmin):
 
 # Showing Palos Table in ORM admin panel 
 class PaloAdmin(admin.ModelAdmin):
-    list_display = ('name',)
+    list_display = ('name', 'song_detail')
     list_filter = ('name',)
     empty_value_display = "-empty-"
     search_fields = ('name',)

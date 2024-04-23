@@ -1,4 +1,5 @@
 from pickle import NONE
+import re
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import redirect, render
 from .models import *
@@ -92,3 +93,12 @@ def FavoritesView(request):
     liked_composers = Composer.objects.filter(favoritecomposer__user=request.user)
     # Render the favorites.html template with the liked composers
     return render(request, 'music/favorites.html', {'liked_composers': liked_composers})
+
+
+
+
+@login_required
+def PaloView(request):
+    palos = Palo.objects.all()
+    context = {"palos" : palos}
+    return render (request, 'music/palos.html' , context)

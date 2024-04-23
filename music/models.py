@@ -50,6 +50,7 @@ class Palo(models.Model):
     name = models.CharField(max_length=255)
     description = models.TextField(null=True)
     song = models.FileField(upload_to="palos/")
+    song_detail = models.TextField(null=True,blank=True)
 
 
     def __str__(self):
