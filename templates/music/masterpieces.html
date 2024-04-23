@@ -139,6 +139,38 @@
   border: 2px solid #fff; /* White border for volume slider thumb */
 }
 
+
+/* Portfolio Section Styles */
+.portfolio-section {
+  margin-top: 30px;
+}
+
+.portfolio-item {
+  margin-bottom: 30px;
+  padding: 20px;
+  background-color: #f8f9fa; /* Match the background color of other sections */
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); /* Match the box shadow of other cards */
+  text-align: center; /* Center the content */
+}
+
+.profile-image {
+  width: 200px; /* Set the desired width */
+  height: 200px; /* Set the same height to ensure the image is a circle */
+  border-radius: 50%;
+  margin: 0 auto 15px; /* Center the image horizontally and add some bottom margin */
+  object-fit: cover; /* Ensure the image fills the circle without stretching */
+}
+
+.portfolio-item h4 {
+  font-size: 1.5rem; /* Match the font size of other headings */
+  color: #333; /* Match the text color of other headings */
+}
+
+.portfolio-item p {
+  font-size: 1rem; /* Match the font size of other paragraphs */
+  color: #777; /* Match the text color of other paragraphs */
+}
 </style>
 
 <div class="container">
@@ -231,6 +263,17 @@
         <a href="https://bekbrace.com" class="sidebar-link btn btn-danger">Visit Website</a>
         <a href="https://docs.djangoproject.com/en/3.1" class="sidebar-link btn btn-secondary">Django Docs</a>
       </div>
+      <div class="portfolio-section">
+        <!-- Portfolio section -->
+       
+        <div class="portfolio-item">
+          <h3>Portfolio</h3>
+            <img src="{% static 'images/Ali.png' %}" alt="Profile Image" class="profile-image">
+            <h4>Ali Seyfi</h4>
+            <p>Description Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.</p>
+        </div>
+        <!-- Add more portfolio items as needed -->
+    </div>
     </div>
   </div>
 </div>
