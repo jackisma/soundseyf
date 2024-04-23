@@ -1,6 +1,7 @@
-{%load static %}
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,78 +10,95 @@
         /* Style for the container */
         .flamenco-container {
             background-color: #f9f9f9;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.6);
+            max-width: 800px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
-      
+
         /* Style for each individual palo */
         .flamenco-palo {
-            margin-bottom: 10px;
-            padding: 10px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            background-color: #fff;
+            margin-bottom: 30px;
+            padding: 20px;
+            border: 2px solid #ddd;
+            border-radius: 15px;
+            background-color: #ffffff;
+            transition: transform 0.3s ease;
+            max-width: 600px;
+            width: 100%;
+            position: relative;
         }
-      
+
+        .flamenco-palo::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .flamenco-palo:hover::after {
+            opacity: 1;
+        }
+
         /* Style for the title */
         .flamenco-title {
-            font-size: 18px;
+            font-size: 24px;
             font-weight: bold;
-            color: #333;
-            margin-bottom: 5px;
-        }
-      
-        /* Style for the description snippet */
-        .flamenco-snippet {
-            font-size: 14px;
-            color: #666;
+            color: #8912c0;
             margin-bottom: 10px;
         }
-      
+
+        /* Style for the description snippet */
+        .flamenco-snippet {
+            font-size: 18px;
+            color: #666;
+            margin-bottom: 20px;
+        }
+
         /* Style for the "See All" button */
         .see-all-button {
-            display: block;
-            width: 100%;
-            padding: 10px;
-            text-align: center;
-            background-color: #007bff;
+            padding: 15px 30px;
+            background-color: #303030;
             color: #fff;
             border: none;
             border-radius: 5px;
             cursor: pointer;
             transition: background-color 0.3s ease;
+            text-decoration: none;
+            font-size: 20px;
         }
-      
+
         .see-all-button:hover {
-            background-color: #0056b3;
+            background-color: #666666;
         }
-      </style>
+    </style>
 </head>
+
 <body>
-  
-  <!-- Example HTML structure for displaying the palos -->
-  <div class="flamenco-container">
-    <h4 style="padding-left: 11%;">Some Our Flamenco Palos</h4>
-    {% for palo in somepalos %}
-    <div class="flamenco-palo">
-        <div class="flamenco-title">{{ palo.name }}</div>
-        <div class="flamenco-snippet">{{ palo.description|truncatewords:15 }}</div>
+
+    <!-- Example HTML structure for displaying the palos -->
+    <div class="flamenco-container">
+        <h4>Some Our Flamenco Palos</h4>
+        {% for palo in somepalos %}
+        <div class="flamenco-palo">
+            <div class="flamenco-title">{{ palo.name }}</div>
+            <div class="flamenco-snippet">{{ palo.description|truncatewords:20 }}</div>
+        </div>
+        {% endfor %}
+
+        <!-- See All button -->
+        <a href="{% url 'music:palos' %}" class="see-all-button">See All</a>
     </div>
-    {% endfor %}
-    
-    <!-- See All button -->
-    <a style="background-color: #333; text-decoration:none" href="{% url 'music:palos' %}" class="see-all-button">See All</a>
-  </div>
-</div>
 </body>
+
 </html>
-
-
-
-
-
-
-
-
-
