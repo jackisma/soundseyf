@@ -1,0 +1,86 @@
+{%load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Somepalos</title>
+    <style>
+        /* Style for the container */
+        .flamenco-container {
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+      
+        /* Style for each individual palo */
+        .flamenco-palo {
+            margin-bottom: 10px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background-color: #fff;
+        }
+      
+        /* Style for the title */
+        .flamenco-title {
+            font-size: 18px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 5px;
+        }
+      
+        /* Style for the description snippet */
+        .flamenco-snippet {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 10px;
+        }
+      
+        /* Style for the "See All" button */
+        .see-all-button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            text-align: center;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+      
+        .see-all-button:hover {
+            background-color: #0056b3;
+        }
+      </style>
+</head>
+<body>
+  
+  <!-- Example HTML structure for displaying the palos -->
+  <div class="flamenco-container">
+    <h4>Some Our Flamenco Palos</h4>
+    {% for palo in somepalos %}
+    <div class="flamenco-palo">
+        <div class="flamenco-title">{{ palo.name }}</div>
+        <div class="flamenco-snippet">{{ palo.description|truncatewords:15 }}</div>
+    </div>
+    {% endfor %}
+    
+    <!-- See All button -->
+    <a style="background-color: #333; text-decoration:none" href="{% url 'music:palos' %}" class="see-all-button">See All</a>
+  </div>
+</div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
