@@ -25,6 +25,7 @@ class ComposersAdmin(admin.ModelAdmin):
     search_help_text = f'search in: {". ".join(search_fields)}'
 
 
+# Showing Favorite Composers Table in ORM admin panel 
 class FavoriteComposerAdmin(admin.ModelAdmin):
     list_display = ('user','composer')
     list_filter = ('user',)
@@ -35,7 +36,20 @@ class FavoriteComposerAdmin(admin.ModelAdmin):
     search_help_text = f'search in: {". ".join(search_fields)}'
 
 
+# Showing Palos Table in ORM admin panel 
+class PaloAdmin(admin.ModelAdmin):
+    list_display = ('name',)
+    list_filter = ('name',)
+    empty_value_display = "-empty-"
+    search_fields = ('name',)
+    save_as = True 
+    save_on_top = True 
+    search_help_text = f'search in: {". ".join(search_fields)}'
+
+
+
 
 admin.site.register(MasterPiece,MasterPiecesAdmin)
 admin.site.register(Composer,ComposersAdmin)
 admin.site.register(FavoriteComposer,FavoriteComposerAdmin)
+admin.site.register(Palo,PaloAdmin)

@@ -21,6 +21,7 @@ class Composer(models.Model):
 
 
 
+
 # Pieces Table
 class MasterPiece(models.Model):
     composer = models.ForeignKey(Composer , on_delete=models.CASCADE,null=True)
@@ -34,6 +35,8 @@ class MasterPiece(models.Model):
         return '{}'.format(self.name)
     
 
+
+
 class FavoriteComposer(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     composer = models.ForeignKey(Composer, on_delete=models.CASCADE)    
@@ -43,3 +46,11 @@ class FavoriteComposer(models.Model):
     
 
     
+class Palo(models.Model):
+    name = models.CharField(max_length=255)
+    description = models.TextField(null=True)
+    song = models.FileField(upload_to="palos/")
+
+
+    def __str__(self):
+        return '{}'.format(self.name)
