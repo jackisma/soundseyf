@@ -208,21 +208,21 @@
             <ul class="pagination justify-content-center">
               {% if pieces.has_previous %}
               <li class="page-item">
-                <a class="page-link" href="?page=1">First</a>
+                <a style="background-color:#6a1990; color: #ffffff;" class="page-link" href="?page=1">First</a>
               </li>
               <li class="page-item">
-                <a class="page-link" href="?page={{ pieces.previous_page_number }}">Previous</a>
+                <a style="background-color:#9c48c3; color: #ffffff;" class="page-link" href="?page={{ pieces.previous_page_number }}">Previous</a>
               </li>
               {% endif %}
               <li class="page-item disabled">
-                <a class="page-link" href="#">Page {{ pieces.number }} of {{ pieces.paginator.num_pages }}</a>
+                <a style="background-color:#ffffff; color: #991ab9;" class="page-link" href="#">Page {{ pieces.number }} of {{ pieces.paginator.num_pages }}</a>
               </li>
               {% if pieces.has_next %}
               <li class="page-item">
-                <a class="page-link" href="?page={{ pieces.next_page_number }}">Next</a>
+                <a style="background-color:#9c48c3; color: #ffffff;" class="page-link" href="?page={{ pieces.next_page_number }}">Next</a>
               </li>
               <li class="page-item">
-                <a class="page-link" href="?page={{ pieces.paginator.num_pages }}">Last</a>
+                <a style="background-color:#6a1990; color: #ffffff;" class="page-link" href="?page={{ pieces.paginator.num_pages }}">Last</a>
               </li>
               {% endif %}
             </ul>

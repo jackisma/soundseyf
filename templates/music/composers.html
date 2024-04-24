@@ -178,21 +178,21 @@
         <ul class="pagination justify-content-center">
           {% if composers.has_previous %}
           <li class="page-item">
-            <a class="page-link" href="?page=1">First</a>
+            <a style="background-color:#6a1990; color: #ffffff;" class="page-link" href="?page=1">First</a>
           </li>
           <li class="page-item">
-            <a class="page-link" href="?page={{ composers.previous_page_number }}">Previous</a>
+            <a style="background-color:#9c48c3; color: #ffffff;" class="page-link" href="?page={{ composers.previous_page_number }}">Previous</a>
           </li>
           {% endif %}
           <li class="page-item disabled">
-            <a class="page-link" href="#">Page {{ composers.number }} of {{ composers.paginator.num_pages }}</a>
+            <a style="background-color:#ffffff; color: #991ab9;" class="page-link" href="#">Page {{ composers.number }} of {{ composers.paginator.num_pages }}</a>
           </li>
           {% if composers.has_next %}
           <li class="page-item">
-            <a class="page-link" href="?page={{ composers.next_page_number }}">Next</a>
+            <a style="background-color:#9c48c3; color: #ffffff;" class="page-link" href="?page={{ composers.next_page_number }}">Next</a>
           </li>
           <li class="page-item">
-            <a class="page-link" href="?page={{ composers.paginator.num_pages }}">Last</a>
+            <a style="background-color:#6a1990; color: #ffffff;" class="page-link" href="?page={{ composers.paginator.num_pages }}">Last</a>
           </li>
           {% endif %}
         </ul>
