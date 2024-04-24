@@ -1,0 +1,107 @@
+{% load static %}
+{% load humanize %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Somepalos</title>
+    <style>
+        /* Style for the container */
+        .blog-container {
+            background-color: #f9f9f9;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 0 30px rgba(18, 120, 47, 0.6);
+            max-width: 800px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* Style for each individual palo */
+        .blog-env {
+            margin-bottom: 30px;
+            padding: 20px;
+            border: 2px solid #ddd;
+            border-radius: 15px;
+            background-color: #ffffff;
+            transition: transform 0.3s ease;
+            max-width: 600px;
+            width: 100%;
+            position: relative;
+        }
+
+        .blog-env::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .blog-env:hover::after {
+            opacity: 1;
+        }
+
+        /* Style for the title */
+        .blog-title {
+            font-size: 24px;
+            font-weight: bold;
+            color: #218129;
+            margin-bottom: 10px;
+        }
+
+        /* Style for the description snippet */
+        .blog-snippet {
+            font-size: 18px;
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        /* Style for the "See All" button */
+        .see-all-button {
+            padding: 15px 30px;
+            background-color: #303030;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            text-decoration: none;
+            font-size: 20px;
+        }
+
+        .see-all-button:hover {
+            background-color: #666666;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Example HTML structure for displaying the palos -->
+    <div class="blog-container">
+        <h4>BLOG RECENT POSTS</h4>
+        {% for post in recentposts %}
+        <div class="blog-env">
+            <div class="blog-title">{{ post.title }}</div>
+            <div class="blog-snippet">{{ post.content|truncatewords:20 }}</div>
+            <p class="card-text text-muted h6">{{ post.author }} | {{post.created_on|naturaltime }}</p>
+
+        </div>
+        {% endfor %}
+
+        <!-- See All button -->
+        <a href="{% url 'blog:blog-home' %}" class="see-all-button">See All</a>
+    </div>
+</body>
+
+</html>

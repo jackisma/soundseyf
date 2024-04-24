@@ -29,7 +29,7 @@
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <!-- Navigation buttons -->
                     <li class="nav-item">
-                        <a class="nav-link {% if 'http://127.0.0.1:8000' in request.path %}active{% endif %}"
+                        <a class="nav-link {% if request.path == '/' %}active{% endif %}"
                             aria-current="page" href="{% url 'website:index' %}">Home</a>
                     </li>
                     <li class="nav-item">
@@ -120,7 +120,7 @@
                         <h2 class="card-title">{{ post.title }}</h2>
                         <p class="card-text text-muted h6">{{ post.author }} | {{post.created_on|naturaltime }}</p>
                         <p class="card-text text-muted h6">{{post.content|truncatewords:10}}</p>
-                        <p class="card-text">{{post.conent|slice:":200"}}</p>
+                        
                         <a href="{% url 'blog:blog-single' post.slug %}" class="btn btn-primary">Read More &rarr;</a>
                     </div>
                 </div>
@@ -147,98 +147,7 @@
             {% endblock sidebar %}
         </div>
     </div>
-    <hr>
-    <!-- Footer -->
-    <footer class="special-footer">
-        <!-- Section: Social media -->
-        <section class="social-media-section">
-            <div class="container">
-                <div class="row justify-content-center align-items-center">
-                    <div class="col-lg-6 text-lg-start">
-                        <p class="social-media-text">Get connected with us on social networks:</p>
-                    </div>
-                    <div class="col-lg-6 text-lg-end">
-                        <!-- <ul class="social-icons">
-                            <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                            <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                            <li><a href="#"><i class="fab fa-google"></i></a></li>
-                            <li><a href="#"><i class="fab fa-instagram"></i></a></li>
-                            <li><a href="#"><i class="fab fa-linkedin"></i></a></li>
-                            <li><a href="#"><i class="fab fa-github"></i></a></li>
-                        </ul> -->
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- Section: Social media -->
 
-        <!-- Section: Links  -->
-        <section class="links-section">
-            <div class="container">
-                <div class="row">
-                    <!-- Grid column -->
-                    <div class="col-md-3 col-lg-3 col-xl-3 mb-4">
-                        <h6 class="footer-heading">Company name</h6>
-                        <p>Here you can use rows and columns to organize your footer content. Lorem ipsum dolor sit
-                            amet, consectetur adipisicing elit.</p>
-                    </div>
-                    <!-- Grid column -->
-
-                    <!-- Grid column -->
-                    <div class="col-md-3 col-lg-3 col-xl-3 mb-4">
-                        <h6 class="footer-heading">Products</h6>
-                        <ul class="footer-links">
-                            <li><a href="#!">Angular</a></li>
-                            <li><a href="#!">React</a></li>
-                            <li><a href="#!">Vue</a></li>
-                            <li><a href="#!">Laravel</a></li>
-                        </ul>
-                    </div>
-                    <!-- Grid column -->
-
-                    <!-- Grid column -->
-                    <div class="col-md-3 col-lg-3 col-xl-3 mb-4">
-                        <h6 class="footer-heading">Useful links</h6>
-                        <ul class="footer-links">
-                            <li><a href="#!">Pricing</a></li>
-                            <li><a href="#!">Settings</a></li>
-                            <li><a href="#!">Orders</a></li>
-                            <li><a href="#!">Help</a></li>
-                        </ul>
-                    </div>
-                    <!-- Grid column -->
-
-                    <!-- Grid column -->
-                    <div class="col-md-3 col-lg-3 col-xl-3 mb-4">
-                        <h6 class="footer-heading">Contact</h6>
-                        <ul class="footer-contact">
-                            <li><i class="fas fa-home"></i> New York, NY 10012, US</li>
-                            <li><i class="fas fa-envelope"></i> info@example.com</li>
-                            <li><i class="fas fa-phone"></i> +01 234 567 88</li>
-                            <li><i class="fas fa-print"></i> +01 234 567 89</li>
-                        </ul>
-                    </div>
-                    <!-- Grid column -->
-                </div>
-                <!-- Grid row -->
-            </div>
-        </section>
-        <!-- Section: Links  -->
-
-        <!-- Copyright -->
-        <section class="copyright-section">
-            <div class="container text-center">
-                <p class="mb-0">© 2021 Copyright: <a href="https://mdbootstrap.com/" class="fw-bold">MDBootstrap.com</a>
-                </p>
-            </div>
-        </section>
-        <!-- Copyright -->
-
-    </footer>
-    <!-- Footer -->
-    <footer class="py-3 bg-grey">
-        <p class="m-0 text-dark text-center">Copyright &copy; 2024 My Music App</p>
-    </footer>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
         integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
         crossorigin="anonymous"></script>

@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 {% load static %}
 {% load music-tags %}
+{% load blog-tags %}
 {% load thumbnail %}
 {% block content %}
 <style>
@@ -69,12 +70,13 @@
   .quote-text {
     font-style: italic;
     color: #555;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
   }
 
   .quote-author {
     font-weight: bold;
-    color: #888;
+    color: #1f1f1f;
+    font-size: large;
   }
 
   .about-section {
@@ -110,11 +112,11 @@
     background-color: #e74c3c;
   }
 /* Portfolio Section Styles */
-.portfolio-section {
+  .portfolio-section {
   margin-top: 30px;
 }
 
-.portfolio-item {
+  .portfolio-item {
   margin-bottom: 30px;
   padding: 20px;
   background-color: #f8f9fa; /* Match the background color of other sections */
@@ -123,7 +125,7 @@
   text-align: center; /* Center the content */
 }
 
-.profile-image {
+  .profile-image {
   width: 200px; /* Set the desired width */
   height: 200px; /* Set the same height to ensure the image is a circle */
   border-radius: 50%;
@@ -131,12 +133,12 @@
   object-fit: cover; /* Ensure the image fills the circle without stretching */
 }
 
-.portfolio-item h4 {
+  .portfolio-item h4 {
   font-size: 1.5rem; /* Match the font size of other headings */
   color: #333; /* Match the text color of other headings */
 }
 
-.portfolio-item p {
+  .portfolio-item p {
   font-size: 1rem; /* Match the font size of other paragraphs */
   color: #777; /* Match the text color of other paragraphs */
 }
@@ -236,6 +238,8 @@
         </div>
     </div>
     {% somepalos %}
+    <hr>
+    {% recentpost %}
   </div>
     </div>
   </div>
