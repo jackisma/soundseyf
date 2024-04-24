@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     "debug_toolbar",
     "sweetify",
     'django.contrib.sites',
+    'django.contrib.sitemaps',
     'captcha',
     'django_extensions',
 ]

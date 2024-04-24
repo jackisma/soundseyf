@@ -19,8 +19,19 @@ from django.urls import path,include
 from django.conf import settings 
 from django.conf.urls.static import static
 from django.contrib.auth import views as auth_views
+from django.contrib.sitemaps.views import sitemap
+from blog.sitemaps import *
+from website.sitemaps import * 
+from music.sitemaps import *
 
 
+sitemaps = {
+    "static": StaticViewSitemap ,
+    "BlogStatic" : BlogStaticSitemap ,
+    "blog": BlogSitemap ,
+    "MusicStatic" : ComposerSitemap ,
+    "pieces" : PiecesSitemap ,
+}
 
 urlpatterns = [
     path("admin/", admin.site.urls),
@@ -31,6 +42,8 @@ urlpatterns = [
     path("__debug__/", include("debug_toolbar.urls")),
     path('accounts/' , include("accounts.urls")),
     path('captcha/', include('captcha.urls')),
+    path("sitemap.xml",sitemap,{"sitemaps": sitemaps},name="django.contrib.sitemaps.views.sitemap",),
+
     ############################## Django Reset Password System ##############################
     path('reset_password/', auth_views.PasswordResetView.as_view(),name="password_reset"), # reset password form
     path('reset_password_sent/',auth_views.PasswordResetDoneView.as_view(),name="password_reset_done"), # reset password data sent

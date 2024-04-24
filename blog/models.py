@@ -1,6 +1,8 @@
 from pyexpat import model
 from django.db import models
 from django.contrib.auth.models import User 
+from django.urls import reverse
+
 
 
 # Defining some Status choices for Status Field that is Placed in Post table
@@ -28,3 +30,8 @@ class Post(models.Model):
 
     def __str__(self):
         return '{}'.format(self.title)
+    
+
+
+    def get_absolute_url(self):
+        return reverse('blog:blog-single',kwargs={'slug':self.slug})
