@@ -13,7 +13,7 @@ class Composer(models.Model):
     image = models.ImageField(upload_to="Composers/" , default="default.jpg")
     genre = models.CharField(max_length=255,null=True,blank=True)
     nationality = models.CharField(blank=True,null=True,max_length=255)
-   
+
    
     def __str__(self):
         return '{}'.format(self.name)
