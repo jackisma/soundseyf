@@ -15,34 +15,35 @@
             color: rgb(255, 255, 255);
             background-color: rgb(204, 0, 255);
         }
+
         .footer {
             background-color: #3b3b3b;
             padding: 50px 0;
         }
-        
+
         .footer h5 {
             color: #ffffff;
             font-size: larger;
         }
-        
+
         .footer p {
             color: #ffffff;
         }
-        
+
         .footer ul {
             padding: 0;
             list-style: none;
         }
-        
+
         .footer ul li {
             margin-bottom: 10px;
         }
-        
+
         .footer ul li a {
             color: #666;
             text-decoration: none;
         }
-        
+
         .footer ul li a:hover {
             color: #333;
         }
@@ -193,6 +194,8 @@
                     <li><a href="{% url 'website:about' %}">About</a></li>
                     <li><a href="{% url 'website:contact' %}">Contact</a></li>
                     <li><a href="{% url 'blog:blog-home' %}">Blog</a></li>
+                    <li><a href="{% url 'music:composers' %}">Composers</a></li>
+                    <li><a href="{% url 'music:palos' %}">Flamenco Palos</a></li>
                 </ul>
             </div>
             <div class="col-md-4">
@@ -205,6 +208,15 @@
             </div>
         </div>
     </div>
+    <hr>
+    <!-- Copyright -->
+    <section class="copyright-section">
+        <div class="container text-center">
+            <p class="mb-0">© 2024 Copyright: <a href="https://mdbootstrap.com/" class="fw-bold">MDBootstrap.com</a>
+            </p>
+        </div>
+    </section>
+    <!-- Copyright -->
 </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
