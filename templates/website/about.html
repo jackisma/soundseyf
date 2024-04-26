@@ -1,14 +1,96 @@
 {% extends 'base.html' %}
 {% load static %}
+{% block content %}
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>About Us</title>
+    <style>
+        /* styles.css */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;
+}
+
+header h1 {
+    margin: 0;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin-right: 20px;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.about-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 50px 20px;
+}
+
+.about-content {
+    flex: 1;
+    padding-right: 20px;
+}
+
+.about-image img {
+    max-width: 40%;
+    height: auto;
+}
+
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 20px 0;
+}
+    </style>
 </head>
 
 <body>
-
+    <header>
+        <h1>About Us</h1>
+        <nav>
+            <ul>
+                <li><a href="">Home</a></li>
+                <li><a href="">Gallery</a></li>
+                <li><a href="">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    <section class="about-section">
+        <div class="about-content">
+            <h2>Discover the Masters of Classical and Flamenco Guitar</h2>
+            <p>At our website, we celebrate the brilliance of classical and flamenco guitar geniuses and their timeless masterpieces. Immerse yourself in the rich history and enchanting melodies crafted by these virtuosos.</p>
+            <p>From the haunting compositions of Fernando Sor to the fiery rhythms of Paco de Lucía, our platform is dedicated to showcasing the extraordinary talents that have shaped the world of guitar music.</p>
+            <p>Join us on a journey through the lives and legacies of these musical legends, and experience the beauty and passion of classical and flamenco guitar like never before.</p>
+        </div>
+        <div class="about-image">
+            <img src="{% static 'images/afshar.jpg' %}" alt="Guitar Geniuses">
+        </div>
+    </section>
+  
+    
+</body>
 </html>
+{% endblock %}
