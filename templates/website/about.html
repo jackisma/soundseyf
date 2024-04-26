@@ -3,94 +3,98 @@
 {% block content %}
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Us</title>
+    <title>About Classical & Flamenco Guitar Geniuses</title>
     <style>
-        /* styles.css */
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-}
+        /* Additional inline styles for advanced styling */
+        .about-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
 
-header {
-    background-color: #333;
-    color: #fff;
-    padding: 20px 0;
-    text-align: center;
-}
+        .about-content {
+            padding: 50px;
+            background-color: #f8f8f8;
+            border-radius: 20px;
+            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+        }
 
-header h1 {
-    margin: 0;
-}
+        .about-content h2 {
+            color: #333;
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
 
-nav ul {
-    list-style-type: none;
-    padding: 0;
-}
+        .about-content p {
+            color: #555;
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
 
-nav ul li {
-    display: inline;
-    margin-right: 20px;
-}
+        .about-image {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-top: 30px;
+        }
 
-nav ul li a {
-    color: #fff;
-    text-decoration: none;
-}
+        .about-image img {
+            width: 100%;
+            height: 200px;
+            /* Fixed height for all images */
+            object-fit: cover;
+            border-radius: 10px;
+            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
 
-.about-section {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 50px 20px;
-}
-
-.about-content {
-    flex: 1;
-    padding-right: 20px;
-}
-
-.about-image img {
-    max-width: 40%;
-    height: auto;
-}
-
-footer {
-    background-color: #333;
-    color: #fff;
-    text-align: center;
-    padding: 20px 0;
-}
+        .about-image img:hover {
+            transform: scale(1.05);
+        }
     </style>
 </head>
 
 <body>
-    <header>
-        <h1>About Us</h1>
+    <!-- <header>
+        <h1>About Classical & Flamenco Guitar Geniuses</h1>
         <nav>
             <ul>
-                <li><a href="">Home</a></li>
-                <li><a href="">Gallery</a></li>
-                <li><a href="">Contact</a></li>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="contact.html">Contact</a></li>
             </ul>
         </nav>
-    </header>
+    </header> -->
     <section class="about-section">
         <div class="about-content">
             <h2>Discover the Masters of Classical and Flamenco Guitar</h2>
-            <p>At our website, we celebrate the brilliance of classical and flamenco guitar geniuses and their timeless masterpieces. Immerse yourself in the rich history and enchanting melodies crafted by these virtuosos.</p>
-            <p>From the haunting compositions of Fernando Sor to the fiery rhythms of Paco de Lucía, our platform is dedicated to showcasing the extraordinary talents that have shaped the world of guitar music.</p>
-            <p>Join us on a journey through the lives and legacies of these musical legends, and experience the beauty and passion of classical and flamenco guitar like never before.</p>
+            <p>At our website, we celebrate the brilliance of classical and flamenco guitar geniuses and their timeless
+                masterpieces. Immerse yourself in the rich history and enchanting melodies crafted by these virtuosos.
+            </p>
+            <p>From the haunting compositions of Fernando Sor to the fiery rhythms of Paco de Lucía, our platform is
+                dedicated to showcasing the extraordinary talents that have shaped the world of guitar music.</p>
+            <p>Join us on a journey through the lives and legacies of these musical legends, and experience the beauty
+                and passion of classical and flamenco guitar like never before.</p>
+            <p>Explore the rich tapestry of classical guitar music and discover the brilliance of composers such as
+                Johann Sebastian Bach, Ludwig van Beethoven, and Isaac Albéniz, who have paved the way for future
+                generations of musicians.</p>
+
         </div>
         <div class="about-image">
-            <img src="{% static 'images/afshar.jpg' %}" alt="Guitar Geniuses">
+            <img src="{% static 'images/afshar.jpg' %}" alt="Composer 1">
+            <img src="{% static 'images/vidovic.jpg' %}" alt="Composer 2">
+            <img src="{% static 'images/bream.jpeg' %}" alt="Composer 3">
+            <img src="{% static 'images/yepes.jpg' %}" alt="Composer 4">
+            <img src="{% static 'images/' %}" alt="Composer 5">
+            <img src="{% static 'images/' %}" alt="Composer 6">
         </div>
     </section>
-  
-    
+
 </body>
+
 </html>
 {% endblock %}
