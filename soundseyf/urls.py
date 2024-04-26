@@ -15,7 +15,7 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path,include
+from django.urls import path,include,re_path
 from django.conf import settings 
 from django.conf.urls.static import static
 from django.contrib.auth import views as auth_views
@@ -43,6 +43,7 @@ urlpatterns = [
     path('accounts/' , include("accounts.urls")),
     path('captcha/', include('captcha.urls')),
     path("sitemap.xml",sitemap,{"sitemaps": sitemaps},name="django.contrib.sitemaps.views.sitemap",),
+    re_path(r'^robots\.txt' , include('robots.urls')),
 
     ############################## Django Reset Password System ##############################
     path('reset_password/', auth_views.PasswordResetView.as_view(),name="password_reset"), # reset password form

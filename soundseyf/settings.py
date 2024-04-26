@@ -52,6 +52,7 @@ INSTALLED_APPS = [
     'django.contrib.sitemaps',
     'captcha',
     'django_extensions',
+    'robots',
 ]
 
 # Django sites Framework
@@ -186,3 +187,9 @@ AUTHENTICATION_BACKENDS = [
 
 # sweetify Notification setting
 SWEETIFY_SWEETALERT_LIBRARY = 'sweetalert2'
+
+
+
+# Robots settings
+ROBOTS_USE_HOST = True
+ROBOTS_USE_SITEMAP = True
