@@ -14,3 +14,9 @@ class Contact(models.Model):
     
     def __str__(self):
        return '{} - {}'.format(self.name, self.id)
+    
+
+
+
+class Subscribe(models.Model):
+    email = models.EmailField()

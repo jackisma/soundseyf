@@ -47,6 +47,7 @@
         .footer ul li a:hover {
             color: #333;
         }
+
         .footer-subscribe {
             text-align: center;
             margin-bottom: 20px;
@@ -220,7 +221,7 @@
     <div class="container">
         <div class="footer-subscribe">
             <h3 style="color: #fff;">Stay Updated!</h3>
-            <form action="#" method="post">
+            <form action="{% url 'website:subscribe' %}" method="post">
                 {% csrf_token %}
                 <input type="email" name="email" placeholder="Enter your email" required>
                 <button type="submit">Subscribe</button>
