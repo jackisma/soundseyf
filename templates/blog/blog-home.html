@@ -46,6 +46,42 @@
         .footer ul li a:hover {
             color: #333;
         }
+        .footer-subscribe {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .footer-subscribe h3 {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .footer-subscribe form {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .footer-subscribe input[type="email"] {
+            width: 250px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-right: 10px;
+        }
+
+        .footer-subscribe button {
+            padding: 10px 20px;
+            background-color: #248d76;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .footer-subscribe button:hover {
+            background-color: #0056b3;
+        }
     </style>
 
 <body data-bs-theme="light">
@@ -181,11 +217,27 @@
     </div>
     <footer class="footer">
         <div class="container">
+            <div class="footer-subscribe">
+                <h3 style="color: #fff;">Stay Updated!</h3>
+                <form action="#" method="post">
+                    {% csrf_token %}
+                    <input type="email" name="email" placeholder="Enter your email" required>
+                    <button type="submit">Subscribe</button>
+                </form>
+                <p style="padding-top: 2%;">Join our community of music SoundSeyf and never miss a Masterpiece!</p>
+            </div>
+        </div>
+        <hr>
+        <div class="container">
             <div class="row">
                 <div class="col-md-4">
                     <h5>About</h5>
-                    <p style="padding-top: 3%;">Description goes here.</p>
-                    <p>Email : Aliseyfi0841@gmail.com</p>
+                    <p style="padding-top: 3%; padding-right:25%">At our website, we celebrate the brilliance of
+                        classical and flamenco guitar geniuses and their timeless masterpieces. Immerse yourself in the
+                        rich history and enchanting melodies crafted by these virtuosos.</p>
+                    <p style="color: #248d76;">Email :
+                    <p style="font-weight: bold;">Aliseyfi0841@gmail.com</p>
+                    </p>
                 </div>
                 <div class="col-md-4">
                     <h5>Navigation</h5>
@@ -207,8 +259,6 @@
                 </div>
             </div>
         </div>
-        <hr>
-
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
         integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
