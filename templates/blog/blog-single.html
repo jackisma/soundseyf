@@ -15,6 +15,37 @@
             color: rgb(255, 255, 255);
             background-color: rgb(204, 0, 255);
         }
+        .footer {
+            background-color: #3b3b3b;
+            padding: 50px 0;
+        }
+        
+        .footer h5 {
+            color: #ffffff;
+            font-size: larger;
+        }
+        
+        .footer p {
+            color: #ffffff;
+        }
+        
+        .footer ul {
+            padding: 0;
+            list-style: none;
+        }
+        
+        .footer ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer ul li a {
+            color: #666;
+            text-decoration: none;
+        }
+        
+        .footer ul li a:hover {
+            color: #333;
+        }
     </style>
 </head>
 
@@ -31,16 +62,20 @@
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <!-- Navigation buttons -->
                     <li class="nav-item">
-                        <a class="nav-link {% if request.path == '/' %}active{% endif %}" aria-current="page" href="{% url 'website:index' %}">Home</a>
+                        <a class="nav-link {% if request.path == '/' %}active{% endif %}" aria-current="page"
+                            href="{% url 'website:index' %}">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link {% if '/contact/' in request.path %}active{% endif %}" href="{% url 'website:contact' %}">Contact</a>
+                        <a class="nav-link {% if '/contact/' in request.path %}active{% endif %}"
+                            href="{% url 'website:contact' %}">Contact</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link {% if '/about/' in request.path %}active{% endif %}" href="{% url 'website:about' %}">About</a>
+                        <a class="nav-link {% if '/about/' in request.path %}active{% endif %}"
+                            href="{% url 'website:about' %}">About</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link {% if '/blog/' in request.path %}active{% endif %}" href="{% url 'blog:blog-home' %}">Blog</a>
+                        <a class="nav-link {% if '/blog/' in request.path %}active{% endif %}"
+                            href="{% url 'blog:blog-home' %}">Blog</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle dropdown-toggle-arrow {% if '/music/' in request.path %}active{% endif %}"
@@ -93,7 +128,7 @@
             </div>
         </div>
     </nav>
-    
+
 
     <div class="container">
         <div class="row">
@@ -144,7 +179,33 @@
 
 <hr>
 <hr>
-
+<footer class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <h5>About</h5>
+                <p style="padding-top: 3%;">Description goes here.</p>
+                <p>Email : Aliseyfi0841@gmail.com</p>
+            </div>
+            <div class="col-md-4">
+                <h5>Navigation</h5>
+                <ul class="list-unstyled" style="padding-top: 3%;">
+                    <li><a href="{% url 'website:about' %}">About</a></li>
+                    <li><a href="{% url 'website:contact' %}">Contact</a></li>
+                    <li><a href="{% url 'blog:blog-home' %}">Blog</a></li>
+                </ul>
+            </div>
+            <div class="col-md-4">
+                <h5>Connect</h5>
+                <ul class="list-unstyled" style="padding-top: 3%;">
+                    <li><a href="#">Telegram</a></li>
+                    <li><a href="https://www.instagram.com/pv.aliseyfi">Instagram</a></li>
+                    <li><a href="https://github.com/aisdisappeared">GitHub</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</footer>
 
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
     integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
