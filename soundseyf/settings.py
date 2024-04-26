@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'multi_captcha_admin',
     "django.contrib.admin",
     "django.contrib.auth",
     'django_password_eye',
@@ -193,3 +194,12 @@ SWEETIFY_SWEETALERT_LIBRARY = 'sweetalert2'
 # Robots settings
 ROBOTS_USE_HOST = True
 ROBOTS_USE_SITEMAP = True
+
+# Multi Captcha For Admin ORM panel
+
+# MULTI_CAPTCHA_ADMIN = {
+#     'engine': 'recaptcha2',
+# }
+MULTI_CAPTCHA_ADMIN = {
+    'engine': 'simple-captcha',
+}
