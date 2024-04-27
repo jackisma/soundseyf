@@ -5,22 +5,25 @@
 {% block content %}
 
 <style>
-  .title-box {
-    background-color: #000;
-    color: #fff;
-    padding: 20px;
-    border-radius: 10px;
-    width: 50%;
-    margin: 0 auto;
-    text-align: center;
-    font-family: verdana;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-  }
-  /* Set a larger fixed height for the carousel */
-  #carouselExample .carousel-item img {
-    height: 800px; /* Adjust this value as needed */
-    object-fit: cover; /* Ensure images fill the designated space */
-  }
+    .title-box {
+        background-color: #000;
+        color: #fff;
+        padding: 20px;
+        border-radius: 10px;
+        width: 50%;
+        margin: 0 auto;
+        text-align: center;
+        font-family: verdana;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    }
+
+    /* Set a larger fixed height for the carousel */
+    #carouselExample .carousel-item img {
+        height: 850px;
+        /* Adjust this value as needed */
+        object-fit: cover;
+        /* Ensure images fill the designated space */
+    }
 </style>
 
 <div id="carouselExample" class="carousel slide" data-bs-ride="carousel" data-interval="3000">
@@ -28,22 +31,29 @@
         <div class="carousel-item active">
             <img src="{% static 'images/andres.jpg' %}" class="d-block w-100" alt="Andres Segovia">
             <div class="carousel-caption d-none d-md-block">
-                <h5>Andres Segovia</h5>
+                <h5 style="font-weight: bold;">Andres Segovia</h5>
                 <p>The father of the modern classical guitar.</p>
             </div>
         </div>
         <div class="carousel-item">
             <img src="{% static 'images/paco.jpg' %}" class="d-block w-100" alt="Paco de Lucia">
             <div class="carousel-caption d-none d-md-block">
-                <h5>Paco de Lucia</h5>
-                <p>Renowned flamenco guitarist.</p>
+                <h5 style="font-weight: bold;">Paco de Lucia</h5>
+                <p>Renowned flamenco genius composer and guitarist.</p>
             </div>
         </div>
         <div class="carousel-item">
             <img src="{% static 'images/dyens.jpg' %}" class="d-block w-100" alt="Roland Dyens">
             <div class="carousel-caption d-none d-md-block">
-                <h5>Roland Dyens</h5>
+                <h5 style="font-weight: bold;">Roland Dyens</h5>
                 <p>French classical guitarist, composer, and arranger.</p>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <img src="{% static 'images/martelli.jpg' %}" class="d-block w-100" alt="Paco de Lucia">
+            <div class="carousel-caption d-none d-md-block">
+                <h5 style="font-weight: bold;">Paulo Martelli</h5>
+                <p>Renowned Brazilian classical guitarist.</p>
             </div>
         </div>
     </div>
