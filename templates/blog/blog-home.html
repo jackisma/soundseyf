@@ -15,9 +15,55 @@
             background-color: rgb(204, 0, 255);
         }
 
+        .title-box {
+            background-color: #c3c6c9;
+            /* Box background color */
+            border: 2px solid #ccc;
+            /* Border color and thickness */
+            border-radius: 10px;
+            /* Rounded corners */
+            padding: 20px;
+            /* Padding inside the box */
+            margin-bottom: 30px;
+            /* Spacing below the box */
+            text-align: center;
+            /* Center align the text */
+        }
+
+        .welcome-title {
+            font-size: 2.5rem;
+            /* Adjust size as needed */
+            color: #333;
+            /* Adjust color as needed */
+            font-weight: bold;
+            /* Make the text bold */
+            margin-bottom: 10px;
+            /* Add some bottom margin for spacing */
+        }
+
+        .safety-message {
+            font-size: 1.5rem;
+            /* Adjust size as needed */
+            color: #666;
+            /* Adjust color as needed */
+            font-style: italic;
+            /* Make the text italic */
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+            /* Add a subtle text shadow */
+            padding: 10px;
+            /* Add padding for spacing */
+            border-radius: 5px;
+            /* Add rounded corners */
+            background: linear-gradient(to right, #40a984, #e1d8b0);
+            /* Apply a gradient background */
+            display: inline-block;
+            /* Ensure the background covers the entire message */
+        }
+
         .footer {
             background-color: #3b3b3b;
             padding: 50px 0;
+            margin-top: 10px;
         }
 
         .footer h5 {
@@ -46,6 +92,7 @@
         .footer ul li a:hover {
             color: #333;
         }
+
         .footer-subscribe {
             text-align: center;
             margin-bottom: 20px;
@@ -81,6 +128,34 @@
 
         .footer-subscribe button:hover {
             background-color: #0056b3;
+        }
+
+        .pagination {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+    
+        .pagination a {
+            color: #fff;
+            padding: 8px 16px;
+            text-decoration: none;
+            border-radius: 4px;
+            margin: 0 4px;
+            transition: all 0.3s ease;
+            background-color: #007bff;
+            border: 1px solid #007bff;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+        }
+    
+        .pagination a:hover {
+            background-color: #0056b3;
+            border-color: #0056b3;
+        }
+    
+        .pagination .active {
+            background-color: #0056b3;
+            border-color: #0056b3;
         }
     </style>
 
@@ -164,16 +239,16 @@
         </div>
     </nav>
 
-
-
     <header class="masthead">
         <div class="overlay"></div>
         <div class="container">
             <div class="row">
                 <div class="col-md-8 col-md-10 mx-auto">
                     <div class="site-heading">
-                        <h3 class="site-heading my-4 mt-3 text-dark">Welcome to Soundseyf's Blog community</h3>
-                        <p class="text-dark">Be Safe With Seyf</p>
+                        <div class="title-box">
+                            <h3 class="welcome-title my-4 mt-3">Welcome to Soundseyf's Blog community</h3>
+                            <p class="safety-message">Be Safe With Seyf</p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -186,7 +261,8 @@
                 <div class="card mb-4">
                     <div class="card-body">
                         <h2 class="card-title">{{ post.title }}</h2>
-                        <p class="card-text text-muted h6">{{ post.author }} | {{post.created_on|naturaltime }} | Views: {{ post.counted_views }}</p>
+                        <p class="card-text text-muted h6">{{ post.author }} | {{post.created_on|naturaltime }} | Views:
+                            {{ post.counted_views }}</p>
                         <p class="card-text text-muted h6">{{post.content|truncatewords:10}}</p>
 
                         <a href="{% url 'blog:blog-single' post.slug %}" class="btn btn-primary">Read More &rarr;</a>
