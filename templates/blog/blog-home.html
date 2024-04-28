@@ -60,6 +60,51 @@
             /* Ensure the background covers the entire message */
         }
 
+        .post-container {
+            padding-left: 6%;
+        }
+
+        .post-card {
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .post-title {
+            font-size: 28px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .post-meta {
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+
+        .post-content {
+            color: #333;
+            font-size: 16px;
+            line-height: 1.6;
+        }
+
+        .read-more-btn {
+            background-color: #007bff;
+            color: #fff;
+            padding: 8px 16px;
+            border-radius: 4px;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+
+        .read-more-btn:hover {
+            background-color: #0056b3;
+        }
+
         .footer {
             background-color: #3b3b3b;
             padding: 50px 0;
@@ -130,36 +175,36 @@
             background-color: #0056b3;
         }
 
-    .pagination {
-        display: flex;
-        justify-content: center;
-        margin-top: 20px;
-    }
+        .pagination {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
 
-    .pagination a {
-        color: #333;
-        padding: 8px 12px;
-        text-decoration: none;
-        border-radius: 4px;
-        margin: 0 4px;
-        transition: all 0.3s ease;
-        background-color: #f8f9fa;
-        border: 2px solid #dee2e6;
-        font-weight: bold;
-        display: inline-block;
-    }
+        .pagination a {
+            color: #333;
+            padding: 8px 12px;
+            text-decoration: none;
+            border-radius: 4px;
+            margin: 0 4px;
+            transition: all 0.3s ease;
+            background-color: #f8f9fa;
+            border: 2px solid #dee2e6;
+            font-weight: bold;
+            display: inline-block;
+        }
 
-    .pagination a:hover {
-        background-color: #007bff;
-        color: #fff;
-        border-color: #007bff;
-    }
+        .pagination a:hover {
+            background-color: #007bff;
+            color: #fff;
+            border-color: #007bff;
+        }
 
-    .pagination .active {
-        background-color: #007bff;
-        color: #fff;
-        border-color: #007bff;
-    }
+        .pagination .active {
+            background-color: #007bff;
+            color: #fff;
+            border-color: #007bff;
+        }
     </style>
 
 <body data-bs-theme="light">
@@ -257,42 +302,57 @@
             </div>
         </div>
     </header>
-    <div class="container" style="padding-left: 6%;">
+    <!-- Post Section -->
+    <div class="container post-container">
         <div class="row">
-            <div class="col-md-8 mt-3 left">
+            <div class="col-md-8 mt-3">
                 {% for post in post_list %}
-                <div class="card mb-4">
+                <div class="card post-card">
                     <div class="card-body">
-                        <h2 class="card-title" style="font-weight: bold;">{{ post.title }}</h2>
-                        <p class="card-text text-muted h6" style="font-weight: bold;">{{ post.author }} | {{post.created_on|naturaltime }} | Views:
-                            {{ post.counted_views }}</p>
-                        <p class="card-text text-muted h6">{{post.content|truncatewords:10}}</p>
-
-                        <a href="{% url 'blog:blog-single' post.slug %}" class="btn btn-primary">Read More &rarr;</a>
+                        <h2 class="card-title post-title">{{ post.title }}</h2>
+                        <p class="card-text text-muted post-meta" style="font-weight: bold;">{{ post.author }} | {{ post.created_on|naturaltime }}
+                            | Views: {{ post.counted_views }}</p>
+                        <p class="card-text post-content">{{ post.content|truncatewords_html:50 }}</p>
+                        <a href="{% url 'blog:blog-single' post.slug %}" class="btn read-more-btn">Read More &rarr;</a>
                     </div>
                 </div>
                 {% endfor %}
-
-                {% if is_paginated %}
-                <div class="pagination" style="padding-left: 45%;">
-                    <span class="page-links">
-                        {% if page_obj.has_previous %}
-                        <a style="text-decoration: none;" href="?page={{ page_obj.previous_page_number }}">previous</a>
-                        {% endif %}
-                        <span class="page-current">
-                            Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }} ...
-                        </span>
-                        {% if page_obj.has_next %}
-                        <a style="text-decoration: none;" href="?page={{ page_obj.next_page_number }}">next</a>
-                        {% endif %}
-                    </span>
-                </div>
-                {% endif %}
             </div>
+
+            <!-- Include sidebar content here -->
             {% block sidebar %}
             {% include 'blog/sidebar.html' %}
             {% endblock sidebar %}
         </div>
+    </div>
+
+    <!-- Pagination -->
+    <div class="pagination-container">
+        <nav aria-label="Page navigation">
+            <ul class="pagination">
+                {% if page_obj.has_previous %}
+                <li class="page-item"><a href="?page={{ page_obj.previous_page_number }}" class="page-link">&laquo;
+                        Previous</a></li>
+                {% else %}
+                <li class="page-item disabled pagination-disabled"><span class="page-link">&laquo; Previous</span></li>
+                {% endif %}
+
+                {% for num in paginator.page_range %}
+                {% if num == page_obj.number %}
+                <li class="page-item active pagination-current"><span class="page-link">{{ num }}</span></li>
+                {% else %}
+                <li class="page-item"><a href="?page={{ num }}" class="page-link pagination-link">{{ num }}</a></li>
+                {% endif %}
+                {% endfor %}
+
+                {% if page_obj.has_next %}
+                <li class="page-item"><a href="?page={{ page_obj.next_page_number }}" class="page-link">Next &raquo;</a>
+                </li>
+                {% else %}
+                <li class="page-item disabled pagination-disabled"><span class="page-link">Next &raquo;</span></li>
+                {% endif %}
+            </ul>
+        </nav>
     </div>
     <footer class="footer">
         <div class="container">
