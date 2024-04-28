@@ -20,7 +20,7 @@
             /* Box background color */
             border: 2px solid #ccc;
             /* Border color and thickness */
-            border-radius: 10px;
+            border-radius: 20px;
             /* Rounded corners */
             padding: 20px;
             /* Padding inside the box */
@@ -263,8 +263,8 @@
                 {% for post in post_list %}
                 <div class="card mb-4">
                     <div class="card-body">
-                        <h2 class="card-title">{{ post.title }}</h2>
-                        <p class="card-text text-muted h6">{{ post.author }} | {{post.created_on|naturaltime }} | Views:
+                        <h2 class="card-title" style="font-weight: bold;">{{ post.title }}</h2>
+                        <p class="card-text text-muted h6" style="font-weight: bold;">{{ post.author }} | {{post.created_on|naturaltime }} | Views:
                             {{ post.counted_views }}</p>
                         <p class="card-text text-muted h6">{{post.content|truncatewords:10}}</p>
 
