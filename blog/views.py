@@ -16,19 +16,30 @@ class PostList(generic.ListView):
 
 # Blog Single View Class Created by Django's Detailview
 class DetailView(generic.DetailView):
-    model = Post 
+    model = Post
     template_name = "blog/blog-single.html"
+    context_object_name = "post"
+
+    def get(self, request, *args, **kwargs):
+        # Call the superclass method to handle the HTTP GET request
+        response = super().get(request, *args, **kwargs)
+        # Increment the view count
+        self.object.counted_views += 1
+        # Save the updated view count
+        self.object.save()
+        return response
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        post = self.get_object()
-        # Get The previous post 
+        post = self.object
+        # Get the previous post
         previous_post = Post.objects.filter(id__lt=post.id).order_by('-id').first()
-        # Get the next post 
+        # Get the next post
         next_post = Post.objects.filter(id__gt=post.id).order_by('id').first()
-        context['previous_post'] = previous_post 
-        context['next_post'] = next_post 
-        return context 
+        # Add the previous and next posts to the context
+        context['previous_post'] = previous_post
+        context['next_post'] = next_post
+        return context
     
 
 
