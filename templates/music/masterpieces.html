@@ -307,11 +307,11 @@
         </ul>
       </div>
       <!-- Blog About -->
-      <div class="card sidebar-card" style="background-color: #ecf0f1;">
-        <h3 class="sidebar-title">About</h3>
-        <p class="card-text">We have a blog app in Soundseyf that our users can share their different idea's in Soundseyf's Blog community.</p>
-        <a href="https://bekbrace.com" class="sidebar-link btn btn-danger">Visit Website</a>
-        <a href="https://docs.djangoproject.com/en/3.1" class="sidebar-link btn btn-secondary">Django Docs</a>
+      <div class="about-section" style="box-shadow: 0 0 30px rgba(0, 0, 0, 0.6);">
+        <h3 class="about-header">About</h3>
+        <p class="about-text">We have a blog app in Soundseyf that our users can share their different idea's in Soundseyf's Blog community.</p>
+        <a href="{% url 'blog:blog-home' %}" class="btn btn-danger visit-website-button">Blog</a>
+        <a href="{% url 'website:about' %}" class="btn btn-secondary visit-website-button" style="background-color: #555;">Soundseyf</a>
       </div>
       <div style="box-shadow: 0 0 30px rgba(0, 0, 0, 0.6);" class="portfolio-section">
         <!-- Portfolio section -->
