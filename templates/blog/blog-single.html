@@ -174,7 +174,8 @@
             <div class="col-md-8 card mb-4 mt-3 left top">
                 <div class="card-body">
                     <h1>{% block title %} {{ object.title }} {% endblock title %}</h1>
-                    <p style="font-weight: bold;" class="text-muted">{{ post.author }} | {{ post.created_on|naturaltime }}</p>
+                    <p style="font-weight: bold;" class="text-muted">{{ post.author }} | {{ post.created_on|naturaltime
+                        }}</p>
                     <p class="card-text">{{ object.content | safe }}</p>
                 </div>
             </div>
@@ -192,6 +193,7 @@
         </div>
         <hr>
         <div id="disqus_thread"></div>
+        {% if request.user.is_authenticated %}
         <script>
             /**
             *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
@@ -211,6 +213,13 @@
         </script>
         <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by
                 Disqus.</a></noscript>
+        {% else %}
+        <div style="background-color: #ff0101; border: 1px solid #000000; border-radius: 5px; padding: 2px;">
+            <h2 class="card-title text-center mb-4"
+                style="font-size: 1.5rem; font-family: 'Oswald', sans-serif; color: #ffffff; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);">
+                Please create and login into your account then you are enable to see and use the commenting service. Thanks!</h2>
+        </div>
+         {% endif %}
     </div>
 </body>
 
