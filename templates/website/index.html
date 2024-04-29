@@ -2,6 +2,8 @@
 {% load static %}
 {% load thumbnail %}
 {% load website-tags %}
+{% load music-tags %}
+{% load blog-tags %}
 {% block content %}
 
 <style>
@@ -24,6 +26,36 @@
         object-fit: cover;
         /* Ensure images fill the designated space */
     }
+
+
+    /* Center align the sections */
+    .centered-section {
+        text-align: center;
+        margin: 0 auto;
+    }
+
+    /* Styling for Composer Quotes */
+    .quote-card-container {
+        max-width: 600px;
+        margin: 30px auto;
+        padding: 20px;
+        border-radius: 10px;
+        background-color: #f8f9fa;
+        box-shadow: 0 0 30px rgba(0, 0, 0, 0.6);
+    }
+
+    .quote-text {
+        font-style: italic;
+        color: #555;
+        margin-bottom: 20px;
+    }
+
+    .quote-author {
+        font-weight: bold;
+        color: #1f1f1f;
+        font-size: large;
+    }
+
 </style>
 
 <div id="carouselExample" class="carousel slide" data-bs-ride="carousel" data-interval="1000">
@@ -73,8 +105,37 @@
 </div>
 
 {% somegeniuses %}
-
 <hr>
+<!-- Composer Quotes -->
+<div class="quote-card centered-section">
+    <h3 class="mb-4">Composer Quotes</h3>
+    <ul class="list-unstyled">
+        <!-- Composer quotes list -->
+        <li>
+            <p class="quote-text">"The guitar is a small orchestra. It is polyphonic. Every string is a different color,
+                a different voice."</p>
+            <p class="quote-author">- Andrés Segovia</p>
+        </li>
+        <li>
+            <p class="quote-text">"Nothing is more beautiful than a guitar, except, possibly two."</p>
+            <p class="quote-author">- Frédéric Chopin</p>
+        </li>
+        <li>
+            <p class="quote-text">"The guitar is the easiest instrument to play and the hardest to play well."</p>
+            <p class="quote-author">- Andrés Segovia</p>
+        </li>
+        <li>
+            <p class="quote-text">"With the guitar I've suffered a great deal, but when I've had a good time, the
+                suffering seemed worthwhile."</p>
+            <p class="quote-author">- Paco de Lucía</p>
+        </li>
+        <li>
+            <p class="quote-text">"Composing is a wonderful task because of the sincerity it carries within, because of
+                the act of creation, because it reveals the greatest depths of the human soul."</p>
+            <p class="quote-author">- Maria Luisa Anido</p>
+        </li>
+    </ul>
+</div>
 
 
 {% endblock content %}
