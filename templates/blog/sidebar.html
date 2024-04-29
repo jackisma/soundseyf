@@ -37,6 +37,7 @@
 
         .popular-posts-list li {
             margin-bottom: 10px;
+            font-size: larger;
         }
 
         .popular-posts-list a {
@@ -51,7 +52,7 @@
         /* Style for the "See All" button */
         .see-all-button {
             padding: 15px 30px;
-            background-color: #303030;
+            background-color: #d11414;
             color: #fff;
             border: none;
             border-radius: 5px;
@@ -64,6 +65,12 @@
         .see-all-button:hover {
             background-color: #666666;
         }
+
+        .blog-snippet {
+            font-size: 18px;
+            color: #666;
+            margin-bottom: 20px;
+        }
     </style>
 </head>
 
@@ -74,7 +81,12 @@
             <h4>POPULAR POSTS</h4>
             <ul class="popular-posts-list">
                 {% for post in popularposts %}
-                    <li><a href="{% url 'blog:blog-single' post.slug %}">{{ post.title }}</a></li>
+                <li style="font-weight: bolder;"><a href="{% url 'blog:blog-single' post.slug %}">{{ post.title }}</a>
+                </li>
+                <div class="blog-snippet">{{ post.content|truncatewords:20 }}</div>
+                <p class="card-text text-muted h6">{{ post.author }} | {{post.created_on|naturaltime }} | views:
+                    {{post.counted_views}}</p>
+                <hr>
                 {% endfor %}
             </ul>
             <!-- See All button -->

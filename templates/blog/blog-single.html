@@ -174,11 +174,11 @@
             <div class="col-md-8 card mb-4 mt-3 left top">
                 <div class="card-body">
                     <h1>{% block title %} {{ object.title }} {% endblock title %}</h1>
-                    <p class="text-muted">{{ post.author }} | {{ post.created_on|naturaltime }} | Views: {{ post.counted_views }}</p>
+                    <p style="font-weight: bold;" class="text-muted">{{ post.author }} | {{ post.created_on|naturaltime }}</p>
                     <p class="card-text">{{ object.content | safe }}</p>
                 </div>
             </div>
-           {% popularpost %}
+            {% popularpost %}
         </div>
 
         <div class="post-navigation">
