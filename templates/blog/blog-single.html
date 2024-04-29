@@ -1,5 +1,6 @@
-{% load humanize %}
 {% load static %}
+{% load humanize %}
+{% load blog-tags %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -177,9 +178,7 @@
                     <p class="card-text">{{ object.content | safe }}</p>
                 </div>
             </div>
-            {% block sidebar %}
-            {% include 'blog/sidebar.html' %}
-            {% endblock sidebar %}
+           {% popularpost %}
         </div>
 
         <div class="post-navigation">

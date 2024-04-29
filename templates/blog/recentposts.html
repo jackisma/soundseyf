@@ -6,7 +6,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Somepalos</title>
+    <title>Recentposts</title>
     <style>
         /* Style for the container */
         .blog-container {
@@ -94,7 +94,7 @@
         <div class="blog-env">
             <div class="blog-title">{{ post.title }}</div>
             <div class="blog-snippet">{{ post.content|truncatewords:20 }}</div>
-            <p class="card-text text-muted h6">{{ post.author }} | {{post.created_on|naturaltime }}</p>
+            <p class="card-text text-muted h6">{{ post.author }} | {{post.created_on|naturaltime }} | views: {{post.counted_views}}</p>
 
         </div>
         {% endfor %}
