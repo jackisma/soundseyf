@@ -126,7 +126,7 @@
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
-                            <li><a class="dropdown-item" href="#">Flamenco Palos</a></li>
+                            <li><a class="dropdown-item" href="{% url 'music:palos' %}">Flamenco Palos</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -174,8 +174,7 @@
             <div class="col-md-8 card mb-4 mt-3 left top">
                 <div class="card-body">
                     <h1>{% block title %} {{ object.title }} {% endblock title %}</h1>
-                    <p style="font-weight: bold;" class="text-muted">{{ post.author }} | {{ post.created_on|naturaltime
-                        }}</p>
+                    <p style="font-weight: bold;" class="text-muted">{{ post.author }} | {{ post.created_on|naturaltime }} | {{ post.counted_views}}</p>
                     <p class="card-text">{{ object.content | safe }}</p>
                 </div>
             </div>
