@@ -22,7 +22,7 @@ Daniel*/
 body {
 	align-items: center;
 	background-color: var(--white);
-	background: url("../images/img.jpg");
+	background: url("../images/bream.jpeg");
 	background-attachment: fixed;
 	background-position: center;
 	background-repeat: no-repeat;
@@ -106,7 +106,7 @@ body {
 
 .overlay {
 	background-color: var(--lightblue);
-	background: url("../images/img.jpg");
+	background: url("../images/two.jpeg");
 	background-attachment: fixed;
 	background-position: center;
 	background-repeat: no-repeat;
