@@ -1,6 +1,8 @@
 asgiref==3.8.1
 bleach==6.1.0
 Django==5.0.4
+django-appconf==1.0.6
+django-cookie-consent==0.4.0
 django-debug-toolbar==4.3.0
 django-extensions==3.2.3
 django-multi-captcha-admin==2.0.0
@@ -11,6 +13,7 @@ django-simple-captcha==0.6.0
 django-summernote==0.8.20.0
 django-taggit==5.0.1
 MarkupSafe==2.1.5
+mysqlclient==2.2.4
 pillow==10.3.0
 six==1.16.0
 sorl-thumbnail==12.10.0
